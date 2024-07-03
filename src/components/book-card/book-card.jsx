@@ -1,8 +1,6 @@
+// Here you import the PropTypes library
 import React from 'react';
-
-// export const BookCard = ({ book }) => {
-//   return <div>{book.title}</div>;
-// };
+import PropTypes from 'prop-types';
 
 export const BookCard = ({ book, onBookClick }) => {
   return (
@@ -14,4 +12,14 @@ export const BookCard = ({ book, onBookClick }) => {
       {book.title}
     </div>
   );
+};
+
+// Hier werden alle Props- Beschränkungen für BookCard definiert
+BookCard.propTypes = {
+  book: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    author: PropTypes.string,
+  }).isRequired,
+  onBookClick: PropTypes.func.isRequired,
 };
