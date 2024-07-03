@@ -15,27 +15,25 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch('https://kraftflix-api-d019e99d109c.herokuapp.com/movies')
+    fetch('https://kraftflix-api-d019e99d109c.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      // fetch('https://openlibrary.org/search.json?q=star+wars')
       .then((response) => response.json())
       .then((data) => {
         console.log('Data fetched from API : ', data);
-        const moviesFromApi = data.map((item) => {
+        const moviesFromApi = data.docs.map((doc) => {
           return {
-            actors: item.Actors,
-            description: item.Description,
-            director: item.Director,
-            featured: item.Featured,
-            genre: item.Genre,
-            image: item.Imageurl,
-            title: item.Title,
-            year: item.Year,
-            id: item._id,
+            id: doc.key,
+            title: doc.title,
+            image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
+            author: doc.author_name?.[0],
           };
         });
+
         setMovies(moviesFromApi);
       });
   }, []);
-  console.log('neuer state movies', movies);
 
   if (selectedMovie) {
     return (
