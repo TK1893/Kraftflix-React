@@ -1,21 +1,35 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import { Greeting } from '../greeting/greeting';
-import { Counter } from '../counter/counter';
-import { MultiStateComponent } from '../multi-state-component/multi-state-component';
-import { BookList } from '../book-list/book-list';
-import { BookListCF } from '../book-list-cf/book-list-cf';
-import { EreignisKlick } from '../ereignis-klick/ereignis-klick';
+import { MyComponent } from '../test/my-component';
+import { Greeting } from '../test/greeting';
+import { Counter } from '../test/counter';
+import { MultiStateComponent } from '../test/multi-state-component';
+import { BookList } from '../test/book-list';
+import { BookListCF } from '../test/book-list-cf';
+import { EreignisKlick } from '../test/ereignis-klick';
+
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { LoginView } from '../login-view/login-view';
+import { SignupView } from '../signup-view/signup-view';
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const storedToken = localStorage.getItem('token');
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
 
   useEffect(() => {
-    fetch('https://kraftflix-api-d019e99d109c.herokuapp.com/movies')
+    if (!token) {
+      return;
+    }
+
+    fetch('https://kraftflix-api-d019e99d109c.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log('Data fetched from API : ', data);
@@ -34,52 +48,81 @@ export const MainView = () => {
         });
         setMovies(moviesFromApi);
       });
-  }, []);
+  }, [token]);
   console.log('neuer state movies', movies);
+
+  if (!user) {
+    return (
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        or
+        <SignupView />
+      </>
+    );
+  }
 
   if (selectedMovie) {
     return (
-      <MovieView
-        movie={selectedMovie}
-        onBackClick={() => setSelectedMovie(null)}
-      />
+      <>
+        <button
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        >
+          Logout
+        </button>
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMovie(null)}
+        />
+      </>
     );
   }
 
   if (movies.length === 0) {
-    return <div>The list is empty!</div>;
+    return (
+      <>
+        <button
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        >
+          Logout
+        </button>
+        <div>The list is empty!</div>
+      </>
+    );
   }
 
   return (
-    <>
-      <div>
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            onMovieClick={(newSelectedMovie) => {
-              setSelectedMovie(newSelectedMovie);
-            }}
-          />
-        ))}
-      </div>
-
-      {/* weitere Komponenten ************************************************************** */}
-      {/* <div>
-        <h1>Komponente: Greeting</h1>
-        <Greeting name="Alice" attraction="bescheiden" />
-        <Greeting name="Bob" attraction="sexy" />
-      </div>
-      <div>
-        <Counter />
-      </div>
-      <div>
-        <MultiStateComponent />
-      </div>
-      <BookList />
-      <BookListCF />
-      <EreignisKlick /> */}
-      {/* ********************************************************************************* */}
-    </>
+    <div>
+      <button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
+      {movies.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
+          }}
+        />
+      ))}
+    </div>
   );
 };

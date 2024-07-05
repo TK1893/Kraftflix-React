@@ -29393,4 +29393,4 @@ $RefreshReg$(_c, "SignupView");
 }
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"i9UZI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iuFlU"}],"lJZlQ":[function() {},{}]},["6VIMv","hXM0O","d8Dch"], "d8Dch", "parcelRequire77dd")
 
-//# sourceMappingURL=index.b4b6dfad.js.map
+//# sourceMappingURL=index.js.map
