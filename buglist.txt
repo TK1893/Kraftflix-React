@@ -1,0 +1,12 @@
+*****************************************************
+Ex 3-5 
+*****************************************************
+(1) 
+Wenn man sich als User in der MovieView eines Filmes ausloggt und sich im selben Tab ohne Neuladen wieder einloggt kommt man nicht auf die Ansicht mit der Liste aller MovieCards sondern wieder auf die MovieView des letzten geöffneten Films.
+Der Bug tritt nicht:
+- in neuem Tab
+- in neuem Fenster
+- im gleichen Tab: nach Refreshen des Browserfensters oder zwischenzeitlichen Laden anderer Seiten
+(2)
+Bei Registrieren muss das Passwort bestimmte Kriterien erfüllen? ansonsten kommt signup failed.
+Wo sind diese Kriterien festgelegt?
