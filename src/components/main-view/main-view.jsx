@@ -1,14 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import { MyComponent } from '../test/my-component';
-import { Greeting } from '../test/greeting';
-import { Counter } from '../test/counter';
-import { MultiStateComponent } from '../test/multi-state-component';
-import { BookList } from '../test/book-list';
-import { BookListCF } from '../test/book-list-cf';
-import { EreignisKlick } from '../test/ereignis-klick';
-
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
