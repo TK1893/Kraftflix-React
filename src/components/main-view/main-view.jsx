@@ -1,77 +1,128 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import { Greeting } from '../greeting/greeting';
-import { Counter } from '../counter/counter';
-import { MultiStateComponent } from '../multi-state-component/multi-state-component';
-import { BookList } from '../book-list/book-list';
-import { BookListCF } from '../book-list-cf/book-list-cf';
-import { EreignisKlick } from '../ereignis-klick/ereignis-klick';
-import { BookCard } from '../book-card/book-card';
-import { BookView } from '../book-view/book-view';
+import { MyComponent } from '../test/my-component';
+import { Greeting } from '../test/greeting';
+import { Counter } from '../test/counter';
+import { MultiStateComponent } from '../test/multi-state-component';
+import { BookList } from '../test/book-list';
+import { BookListCF } from '../test/book-list-cf';
+import { EreignisKlick } from '../test/ereignis-klick';
+
+import { MovieCard } from '../movie-card/movie-card';
+import { MovieView } from '../movie-view/movie-view';
+import { LoginView } from '../login-view/login-view';
+import { SignupView } from '../signup-view/signup-view';
 
 export const MainView = () => {
-  const [books, setBooks] = useState([]);
-  const [selectedBook, setSelectedBook] = useState(null);
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const storedToken = localStorage.getItem('token');
+  const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
 
   useEffect(() => {
-    fetch('https://openlibrary.org/search.json?q=star+wars')
+    if (!token) {
+      return;
+    }
+
+    fetch('https://kraftflix-api-d019e99d109c.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log('Data fetched from API : ', data);
-        const booksFromApi = data.docs.map((doc) => {
+        const moviesFromApi = data.map((item) => {
           return {
-            id: doc.key,
-            title: doc.title,
-            image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
-            author: doc.author_name?.[0],
+            actors: item.Actors,
+            description: item.Description,
+            director: item.Director,
+            featured: item.Featured,
+            genre: item.Genre,
+            image: item.Imageurl,
+            title: item.Title,
+            year: item.Year,
+            id: item._id,
           };
         });
-
-        setBooks(booksFromApi);
+        setMovies(moviesFromApi);
       });
-  }, []);
+  }, [token]);
+  console.log('neuer state movies', movies);
 
-  if (selectedBook) {
+  if (!user) {
     return (
-      <BookView book={selectedBook} onBackClick={() => setSelectedBook(null)} />
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        or
+        <SignupView />
+      </>
     );
   }
 
-  if (books.length === 0) {
-    return <div>The list is empty!</div>;
+  if (selectedMovie) {
+    return (
+      <>
+        <button
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        >
+          Logout
+        </button>
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMovie(null)}
+        />
+      </>
+    );
+  }
+
+  if (movies.length === 0) {
+    return (
+      <>
+        <button
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        >
+          Logout
+        </button>
+        <div>The list is empty!</div>
+      </>
+    );
   }
 
   return (
-    <>
-      <div>
-        {books.map((book) => (
-          <BookCard
-            key={book.id}
-            book={book}
-            onBookClick={(newSelectedBook) => {
-              setSelectedBook(newSelectedBook);
-            }}
-          />
-        ))}
-      </div>
-
-      {/* weitere Komponenten ************************************************************** */}
-      {/* <div>
-        <h1>Komponente: Greeting</h1>
-        <Greeting name="Alice" attraction="bescheiden" />
-        <Greeting name="Bob" attraction="sexy" />
-      </div>
-      <div>
-        <Counter />
-      </div>
-      <div>
-        <MultiStateComponent />
-      </div>
-      <BookList />
-      <BookListCF />
-      <EreignisKlick /> */}
-      {/* ********************************************************************************* */}
-    </>
+    <div>
+      <button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
+      {movies.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
+          }}
+        />
+      ))}
+    </div>
   );
 };
