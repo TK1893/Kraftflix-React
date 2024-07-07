@@ -10,3 +10,4 @@ Der Bug tritt nicht:
 (2)
 Bei Registrieren muss das Passwort bestimmte Kriterien erfüllen? ansonsten kommt signup failed.
 Wo sind diese Kriterien festgelegt?
+

@@ -1,6 +1,6 @@
 /* The following line can be included in a src/App.scss */
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Container } from 'react-bootstrap';
 import './index.scss';
 
 // Import statement to indicate that you need to bundle `./index.scss`
@@ -9,7 +9,11 @@ import { MainView } from './components/main-view/main-view';
 // Main component (will eventually use all the others)
 
 const App = () => {
-  return <MainView />;
+  return (
+    <Container style={{ border: '1px solid red' }}>
+      <MainView />
+    </Container>
+  );
 };
 
 // Finds the root of your app
