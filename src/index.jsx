@@ -1,5 +1,4 @@
 /* The following line can be included in a src/App.scss */
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 import './index.scss';
 
