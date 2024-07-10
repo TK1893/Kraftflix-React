@@ -1,0 +1,26 @@
+bis (2:22)
+> Code-Klau
+_____________________________
+ab (2:22) 
+Tidy Up ProfileView
+
+ProfileView aufsplitten in einzelne Komponenten
+- ProfileView (parent Komponente)
+- Childkomponenten:
+    - UserInfo
+    - FavoriteMoviesList
+    - UserForm
+
+ProfileView ist die parent Komponente.
+Sie enthält alles smarte was passiert (die Logik)
+Zurück bleiben also:
+- alle Kontroll-Funktionen
+- die return-Anweisung für die Darstellung aller importierten Child-Komponenten
+- Die Childkomponenten Userinfo, FavoriteMoviesList und Form werden in ProfileView importiert
+- Sie werden in der return-Anweisung nur zur 
+- in return-Anweisung nur die Darstellung der anderen Komponenten
+alles smarte was passiert, alle Kontroll-Funktionen
+
+(2:22) UserInfo
+(6:00) FavoriteMovies
+(9:00) Form
