@@ -4,6 +4,7 @@ Ex 3-5
 (1)
 Bei Registrieren muss das Passwort bestimmte Kriterien erfüllen? ansonsten kommt signup failed.
 Wo sind diese Kriterien festgelegt?
+
 *****************************************************
 Ex 3-7 
 *****************************************************
