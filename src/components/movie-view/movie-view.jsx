@@ -4,7 +4,7 @@ import './movie-view.scss';
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
-  const movie = movies.find((m) => m.id === movieId);
+  const movie = movies.find((item) => item.id === movieId);
 
   return (
     <div className="mv-container">
