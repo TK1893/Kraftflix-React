@@ -1,13 +1,20 @@
 *****************************************************
 Ex 3-5 
 *****************************************************
-(1) 
-Wenn man sich als User in der MovieView eines Filmes ausloggt und sich im selben Tab ohne Neuladen wieder einloggt kommt man nicht auf die Ansicht mit der Liste aller MovieCards sondern wieder auf die MovieView des letzten geöffneten Films.
-Der Bug tritt nicht:
-- in neuem Tab
-- in neuem Fenster
-- im gleichen Tab: nach Refreshen des Browserfensters oder zwischenzeitlichen Laden anderer Seiten
-(2)
+(1)
+Bei Registrieren muss das Passwort bestimmte Kriterien erfüllen? ansonsten kommt signup failed.
+Wo sind diese Kriterien festgelegt?
+*****************************************************
+Ex 3-7 
+*****************************************************
+(1)
 Bei Registrieren muss das Passwort bestimmte Kriterien erfüllen? ansonsten kommt signup failed.
 Wo sind diese Kriterien festgelegt?
 
+(2) 
+Wenn man sich über Login einloggt, kommt man beim ersten Login 
+- nicht direkt auf die MainView mit der Darstellung der MovieCards aller Filme
+- es erscheint stattdessen zunächst der Hinweis: "The list is empty"
+- erst durch Refreshen des Browserfensters wird die MainView  mit den MovieCards angezeigt.
+- danach wird bei einem erneuten Login (nach Logout) die MainView mit MovieCards wie gewünscht angezeigt.
+- außer man öfnnet neues Fenster und gibt localhost:1234 erneut ein
