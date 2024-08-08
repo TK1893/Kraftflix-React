@@ -13196,10 +13196,6 @@ textarea.form-control-lg {
   padding: 4px 12px;
 }
 
-card-title {
-  color: pink;
-}
-
 .fav-movie {
   margin-bottom: 15px;
 }
@@ -13230,5 +13226,9 @@ card-title {
 
 .card {
   margin-bottom: 15px;
+}
+
+card-title {
+  color: pink;
 }
 /*# sourceMappingURL=index.2212206d.css.map */

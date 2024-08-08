@@ -34437,16 +34437,16 @@ var _movieView = require("../movie-view/movie-view");
 var _loginView = require("../login-view/login-view");
 var _signupView = require("../signup-view/signup-view");
 var _navigationBar = require("../navigation-bar/navigation-bar");
-var _mainViewScss = require("./main-view.scss");
 var _profileView = require("../profile-view/profile-view");
+var _mainViewScss = require("./main-view.scss");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
-    const [movies, setMovies] = (0, _react.useState)([]);
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
+    const [movies, setMovies] = (0, _react.useState)([]);
     const [favoriteMovies, setFavoriteMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
         if (!token) return;
@@ -34476,8 +34476,8 @@ const MainView = ()=>{
     }, [
         token
     ]);
-    console.log("neuer state movies", movies);
-    console.log("neuer state favoriteMovies", favoriteMovies);
+    // console.log('neuer state movies', movies);
+    // console.log('neuer state favoriteMovies', favoriteMovies);
     const onLoggedIn = (user, token)=>{
         setUser(user);
         setToken(token);
@@ -34697,7 +34697,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "R90iKxogyW+vdiw0AOUu+6QQujM=");
+_s(MainView, "84yjEPN3aPa8RcWF/cZU10yYTyc=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -34707,7 +34707,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","../navigation-bar/navigation-bar":"bsPVM","./main-view.scss":"eBaMl","../profile-view/profile-view":"2vVqf","@parcel/transformer-js/src/esmodule-helpers.js":"i9UZI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iuFlU"}],"9xmpe":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","../navigation-bar/navigation-bar":"bsPVM","../profile-view/profile-view":"2vVqf","./main-view.scss":"eBaMl","@parcel/transformer-js/src/esmodule-helpers.js":"i9UZI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iuFlU"}],"9xmpe":[function(require,module,exports) {
 /**
  * React Router DOM v6.24.1
  *
@@ -42819,7 +42819,7 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"i9UZI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iuFlU"}],"eBaMl":[function() {},{}],"2vVqf":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"i9UZI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iuFlU"}],"2vVqf":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43328,6 +43328,6 @@ $RefreshReg$(_c, "ProfileUpdate");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"i9UZI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iuFlU"}],"eyKYH":[function() {},{}]},["6VIMv","hXM0O","d8Dch"], "d8Dch", "parcelRequire77dd")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"i9UZI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iuFlU"}],"eyKYH":[function() {},{}],"eBaMl":[function() {},{}]},["6VIMv","hXM0O","d8Dch"], "d8Dch", "parcelRequire77dd")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

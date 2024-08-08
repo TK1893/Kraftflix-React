@@ -9,16 +9,16 @@ import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
-import { ProfileView } from '../profile-view/profile-view';
 
 import './main-view.scss';
+import { ProfileView } from '../profile-view/profile-view';
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const storedToken = localStorage.getItem('token');
+  const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(() => {
@@ -51,8 +51,8 @@ export const MainView = () => {
       });
   }, [token]);
 
-  // console.log('neuer state movies', movies);
-  // console.log('neuer state favoriteMovies', favoriteMovies);
+  console.log('neuer state movies', movies);
+  console.log('neuer state favoriteMovies', favoriteMovies);
 
   const onLoggedIn = (user, token) => {
     setUser(user);

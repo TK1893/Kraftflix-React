@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
+import { useParams } from 'react-router';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { MovieCard } from '../movie-card/movie-card';
@@ -16,22 +17,23 @@ import './main-view.scss';
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const storedToken = localStorage.getItem('token');
+  const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const { movieId } = useParams();
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     if (!token) {
       return;
     }
-
     fetch('https://kraftflix-api-d019e99d109c.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Data fetched from API : ', data);
+        // console.log('Data fetched from API : ', data);
         const moviesFromApi = data.map((item) => {
           return {
             Actors: item.Actors,
@@ -49,10 +51,37 @@ export const MainView = () => {
         let favMovies = data.filter((m) => user.FavoriteMovies.includes(m._id));
         setFavoriteMovies(favMovies);
       });
-  }, [token]);
-
+  }, [token, user]);
   // console.log('neuer state movies', movies);
   // console.log('neuer state favoriteMovies', favoriteMovies);
+
+  // useEffect(() => {
+  //   const addtoFavorite = ({ movieID }) => {
+  //     fetch(
+  //       `https://kraftflix-api-d019e99d109c.herokuapp.com/users/${user.Username}/${movieId}`,
+  //       {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     )
+  //       .then((response) => {
+  //         if (response.ok) {
+  //           return response.json();
+  //         }
+  //       })
+  //       .then((data) => {
+  //         setFavoriteMovies(data);
+  //         console.log('data:', data);
+  //       })
+  //       .catch((e) => {
+  //         console.log(e);
+  //       });
+  //   };
+  // }, [movieId, user]);
+  // addtoFavorite('6659b375bfc7b43b75e409ab');
 
   const onLoggedIn = (user, token) => {
     setUser(user);
