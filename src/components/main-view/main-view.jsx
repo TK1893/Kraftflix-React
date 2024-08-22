@@ -20,6 +20,29 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
+  // export const MainView = () => {
+  //   // Überprüfen, ob der Eintrag im localStorage gültiges JSON ist
+  //   const getValidJSON = (item) => {
+  //     try {
+  //       return JSON.parse(item);
+  //     } catch (e) {
+  //       return null;
+  //     }
+  //   };
+
+  //   const storedUser = localStorage.getItem('user')
+  //     ? getValidJSON(localStorage.getItem('user'))
+  //     : null;
+  //   const storedToken = localStorage.getItem('token')
+  //     ? localStorage.getItem('token')
+  //     : null;
+
+  //   const [movies, setMovies] = useState([]);
+  //   const [user, setUser] = useState(storedUser);
+  //   const [token, setToken] = useState(storedToken);
+  //   const [favoriteMovies, setFavoriteMovies] = useState([]);
+
+  // ... Rest deines Codes
 
   useEffect(() => {
     if (!token) {
