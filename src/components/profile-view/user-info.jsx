@@ -16,7 +16,7 @@ export const UserInfo = ({
       <p>Birthdate: {birthdate}</p>
       <p>Password: {password}</p>
       <p>Id: {id}</p>
-      <p>Favorite Movies: {favMovies}</p>
+      <p>Favorite Movies: {favMovies.map((movie) => `${movie}, `)}</p>
     </>
   );
 };

@@ -41,6 +41,7 @@ export const ProfileUpdate = ({ user, updatedUser }) => {
         }
       })
       .then((data) => {
+        console.log('Data:', data);
         updatedUser(data);
         setUsername(data.Username);
         setPassword(data.Password);

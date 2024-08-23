@@ -110,3 +110,28 @@ git commit -m "Your commit message"
 (12) Pushen des neuen Branches zu GitHub
 ----------------------------------------------
 git push -u origin NEW_BRANCH_NAME
+
+----------------------------------------------
+(13) KOMBIBEFEHL (9) (11) (12)
+----------------------------------------------
+git checkout -b NEW_BRANCH_NAME
+git add .
+git commit -m "Your commit message"
+git push -u origin NEW_BRANCH_NAME
+------------------------------------
+git checkout -b Ex-3-7-ProfileView-#3
+git add .
+git commit -m "Update Meet"
+git push -u origin Ex-3-7-ProfileView-#3
+
+----------------------------------------------
+(14) Mergen (zusammenführen) eines branches in main branch
+----------------------------------------------
+git checkout main
+-
+git pull origin main // Hole die neuesten Änderungen aus dem entfernten Repository (falls nötig)
+-
+git merge Ex-4-7
+git add .
+git commit -m "Update Meet App Ex.4-7"
+git push origin main

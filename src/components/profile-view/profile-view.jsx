@@ -12,14 +12,12 @@ export const ProfileView = ({
   updatedUser,
   onLoggedOut,
   movies,
-  favoriteMovies,
+  // favoriteMovies,
 }) => {
   console.log('user:', user);
-  // const favoriteMovies = movies.filter((m) =>
-  //   user.FavoriteMovies.includes(m._id)
-  // );
-  console.log('favoriteMovies auf ProfileView:', favoriteMovies);
-  console.log('Movies auf ProfileView:', movies);
+  const favoriteMovies = movies.filter((m) =>
+    user.FavoriteMovies.includes(m._id)
+  );
 
   const formattedBirthdate = new Date(user.Birthdate)
     .toISOString()

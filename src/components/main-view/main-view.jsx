@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import axios from 'axios';
 
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -14,41 +15,49 @@ import { ProfileView } from '../profile-view/profile-view';
 import './main-view.scss';
 
 export const MainView = () => {
-  const storedUser = JSON.parse(localStorage.getItem('user'));
-  const storedToken = localStorage.getItem('token');
+  const getValidJSON = (item) => {
+    try {
+      return JSON.parse(item);
+    } catch (e) {
+      return null;
+    }
+  };
+
+  const storedUser = localStorage.getItem('user')
+    ? getValidJSON(localStorage.getItem('user'))
+    : null;
+  const storedToken = localStorage.getItem('token')
+    ? localStorage.getItem('token')
+    : null;
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-  const [favoriteMovies, setFavoriteMovies] = useState([]);
-  // export const MainView = () => {
-  //   // Überprüfen, ob der Eintrag im localStorage gültiges JSON ist
-  //   const getValidJSON = (item) => {
-  //     try {
-  //       return JSON.parse(item);
-  //     } catch (e) {
-  //       return null;
-  //     }
-  //   };
+  // const [favoriteMovies, setFavoriteMovies] = useState(['']);
+  // ---------------------------------------------------------------------
 
-  //   const storedUser = localStorage.getItem('user')
-  //     ? getValidJSON(localStorage.getItem('user'))
-  //     : null;
-  //   const storedToken = localStorage.getItem('token')
-  //     ? localStorage.getItem('token')
-  //     : null;
+  const onLoggedOut = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  };
 
-  //   const [movies, setMovies] = useState([]);
-  //   const [user, setUser] = useState(storedUser);
-  //   const [token, setToken] = useState(storedToken);
-  //   const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const onLoggedIn = (user, token) => {
+    setUser(user);
+    setToken(token);
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', token);
+  };
 
-  // ... Rest deines Codes
+  const updatedUser = (user) => {
+    setUser(user);
+    localStorage.setItem('user', JSON.stringify(user));
+  };
+  // -------------------------------------
 
   useEffect(() => {
     if (!token) {
       return;
     }
-
     fetch('https://kraftflix-api-d019e99d109c.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -69,29 +78,26 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
-        let favMovies = data.filter((m) => user.FavoriteMovies.includes(m._id));
-        setFavoriteMovies(favMovies);
+        // let favMovies = data.filter((m) => user.FavoriteMovies.includes(m._id));
+        // setFavoriteMovies(favMovies);
+      })
+      .catch((e) => {
+        console.log(e);
       });
   }, [token]);
 
-  // console.log('neuer state movies', movies);
-  // console.log('neuer state favoriteMovies', favoriteMovies);
+  // useEffect(() => {
+  //   if (user) {
+  //     setFavoriteMovies(user.FavoriteMovies);
+  //     setUser(user);
+  //     localStorage.setItem('user', JSON.stringify(user));
+  //   }
+  // }, [user]);
 
-  const onLoggedIn = (user, token) => {
-    setUser(user);
-    setToken(token);
-    localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('token', token);
-  };
-  const onLoggedOut = () => {
-    setUser(null);
-    setToken(null);
-    localStorage.clear();
-  };
-  const updatedUser = (user) => {
-    setUser(user);
-    localStorage.setItem('user', JSON.stringify(user));
-  };
+  // const updatedUser = (user) => {
+  //   setUser(user);
+  //   localStorage.setItem('user', JSON.stringify(user));
+  // };
 
   return (
     <BrowserRouter>
@@ -141,7 +147,7 @@ export const MainView = () => {
                       updatedUser={updatedUser}
                       onLoggedOut={onLoggedOut}
                       movies={movies}
-                      favoriteMovies={favoriteMovies}
+                      // favoriteMovies={favoriteMovies}
                     />
                   </Col>
                 )}
@@ -162,7 +168,9 @@ export const MainView = () => {
                       movies={movies}
                       user={user}
                       token={token}
+                      updatedUser={updatedUser}
                       setUser={setUser}
+                      onLoggedIn={onLoggedIn}
                     />
                   </Col>
                 )}

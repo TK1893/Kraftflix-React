@@ -21,11 +21,13 @@ export const MovieCard = ({ movie }) => {
   );
 };
 
-// Hier werden alle Props- Beschränkungen für BookCard definiert
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    director: PropTypes.string,
-  }).isRequired,
-};
+// Hier werden alle Props- Beschränkungen für MovieCard definiert
+// MovieCard.propTypes = {
+//   movie: PropTypes.shape({
+//     Title: PropTypes.string.isRequired,
+//     Imageurl: PropTypes.string.isRequired,
+//     Director: PropTypes.shape({
+//       Name: PropTypes.string.isRequired,
+//     }).isRequired,
+//   }).isRequired,
+// };
