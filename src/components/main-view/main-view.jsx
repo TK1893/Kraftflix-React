@@ -1,9 +1,10 @@
+// src\components\main-view\main-view.jsx
+
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import axios from 'axios';
 
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -11,9 +12,9 @@ import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { ProfileView } from '../profile-view/profile-view';
-
 import './main-view.scss';
 
+// ++ MainView ++++
 export const MainView = () => {
   const getValidJSON = (item) => {
     try {
@@ -32,9 +33,10 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-  // const [favoriteMovies, setFavoriteMovies] = useState(['']);
-  // ---------------------------------------------------------------------
 
+  //  ******************************
+  //  ++ Functions ++++
+  //  ******************************
   const onLoggedOut = () => {
     setUser(null);
     setToken(null);
@@ -52,8 +54,10 @@ export const MainView = () => {
     setUser(user);
     localStorage.setItem('user', JSON.stringify(user));
   };
-  // -------------------------------------
 
+  //  *********************************
+  //  ++ Fetch Movies from API ++++
+  //  *********************************
   useEffect(() => {
     if (!token) {
       return;
@@ -78,32 +82,16 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
-        // let favMovies = data.filter((m) => user.FavoriteMovies.includes(m._id));
-        // setFavoriteMovies(favMovies);
       })
       .catch((e) => {
         console.log(e);
       });
   }, [token]);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     setFavoriteMovies(user.FavoriteMovies);
-  //     setUser(user);
-  //     localStorage.setItem('user', JSON.stringify(user));
-  //   }
-  // }, [user]);
-
-  // const updatedUser = (user) => {
-  //   setUser(user);
-  //   localStorage.setItem('user', JSON.stringify(user));
-  // };
-
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-
-      <Row className="justify-content-md-center main-row">
+      <Row className="justify-content-md-center main-row mt-3">
         <Routes>
           <Route
             path="/login"
@@ -140,14 +128,13 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : (
-                  <Col md={5}>
+                  <Col xs={12}>
                     <ProfileView
                       user={user}
                       token={token}
                       updatedUser={updatedUser}
                       onLoggedOut={onLoggedOut}
                       movies={movies}
-                      // favoriteMovies={favoriteMovies}
                     />
                   </Col>
                 )}
@@ -163,13 +150,13 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list is empty</Col>
                 ) : (
-                  <Col md={8}>
+                  // <Col md={8}>
+                  <Col>
                     <MovieView
                       movies={movies}
                       user={user}
                       token={token}
                       updatedUser={updatedUser}
-                      setUser={setUser}
                       onLoggedIn={onLoggedIn}
                     />
                   </Col>
@@ -194,7 +181,7 @@ export const MainView = () => {
                         sm={6}
                         md={4}
                         lg={3}
-                        className="mb-5"
+                        className="mb-3"
                       >
                         <MovieCard movie={movie} />
                       </Col>

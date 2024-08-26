@@ -1,4 +1,90 @@
-$primary: Pink;
-$body-bg: AntiqueWhite;
+$primary: rgb(0, 0, 0);
+$secondary: rgb(250, 235, 215);
+$tertiary: #ff00a2;
+$quatenary: rgb(83, 92, 223);
+$body-bg: antiquewhite;
+$pri-font: 'Abril Fatface', serif;
+$sec-font: 'Poppins', sans-serif;
 
 @import '~bootstrap/scss/bootstrap.scss';
+
+// body {
+//   font-family: $sec-font;
+//   // Ersetze 'Roboto' durch die gewünschte Schriftart
+// }
+.primary-button {
+  background-color: black;
+  color: $secondary;
+  font-family: $pri-font;
+}
+.primary-button-outline {
+  background-color: $secondary;
+  border-width: 1px;
+  color: $primary;
+  font-family: $pri-font;
+  &:hover {
+    color: $secondary;
+    border-width: 2px;
+  }
+}
+
+.secondary-button {
+  background-color: $secondary;
+  border-width: 1px;
+  color: $primary;
+  font-family: $pri-font;
+  &:hover {
+    color: $secondary;
+    border-width: 2px;
+  }
+}
+
+.card-header {
+  // font-family: $pri-font;
+}
+// .card-header {
+//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
+//   color: white; /* Setzt die Textfarbe auf weiß */
+//   //   text-align: center; /* Zentriert den Text */
+//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
+//   border-bottom: none; /* Entfernt den unteren Rand */
+// }
+
+// .card {
+//   border: none;
+//   background-size: cover;
+//   background-position: center;
+// }
+// .card-header {
+//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
+//   color: white; /* Setzt die Textfarbe auf weiß */
+//   //   text-align: center; /* Zentriert den Text */
+//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
+//   border-color: black;
+//   //   border-bottom: none; /* Entfernt den unteren Rand */
+// }
+
+// .card-footer {
+//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
+//   color: $secondary; /* Setzt die Textfarbe auf weiß */
+//   //   text-align: center; /* Zentriert den Text */
+//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
+//   // border-bottom: none; /* Entfernt den unteren Rand */
+// }
+
+// .card-body {
+//   border-radius: 5px;
+//   margin: 10px;
+//   //   background-color: rgb(250, 235, 215, 0.9);
+//   background-color: rgba(0, 0, 0, 0.9);
+//   color: $white; /* Setzt die Textfarbe auf weiß */
+//   .card-title {
+//     padding: 5px 0;
+//     color: $tertiary;
+//   }
+// }
+
+// .card-body-div {
+//   padding: 10px;
+//   background-color: $secondary;
+// }

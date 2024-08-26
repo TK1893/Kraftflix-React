@@ -37,37 +37,43 @@
 //   );
 // };
 // CF NavigationBar
+
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+
+import './navigation-bar.scss';
+
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="black" expand="lg" className="mb-3">
       <Container>
-        <Navbar.Brand as={Link} to="/">
-          kraftFlix
+        <Navbar.Brand as={Link} to="/" className="kraftflix-brand mx-3">
+          <p>kraftFlix</p>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {!user && (
               <>
-                <Nav.Link as={Link} to="/login">
+                <Nav.Link as={Link} to="/login" className="mx-3">
                   Login
                 </Nav.Link>
-                <Nav.Link as={Link} to="/signup">
+                <Nav.Link as={Link} to="/signup" className="mx-3">
                   Signup
                 </Nav.Link>
               </>
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">
-                  Home
+                <Nav.Link as={Link} to="/" className="mx-3">
+                  Movies
                 </Nav.Link>
-                <Nav.Link as={Link} to="/users/:Username">
+                <Nav.Link as={Link} to="/users/:Username" className="mx-3">
                   Profile
                 </Nav.Link>
-                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                <Nav.Link onClick={onLoggedOut} className="mx-3">
+                  Logout
+                </Nav.Link>
               </>
             )}
           </Nav>

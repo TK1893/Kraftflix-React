@@ -1,7 +1,115 @@
-.back-button {
-  padding: 4px 12px 4px 12px;
-  color: whitesmoke;
-  background-color: dodgerblue;
-  border: none;
-  border-radius: 4px;
+/* movie-view.scss */
+$primary: rgb(0, 0, 0);
+$secondary: rgb(250, 235, 215);
+$tertiary: #ff00a2;
+$quatenary: rgb(83, 92, 223);
+$body-bg: antiquewhite;
+$pri-font: 'Abril Fatface', serif;
+$sec-font: 'Roboto', sans-serif;
+
+.card {
+  .card-subtitle {
+    background-color: $primary;
+    color: $secondary;
+    border: solid rgba(0, 0, 0, 0.1) 1px;
+    border-radius: 5px 5px 0px 0px;
+    padding: 0.4rem;
+  }
+  .card-text {
+    border: solid rgba(0, 0, 0, 0.2) 1px;
+    border-top: none;
+    border-radius: 0px 0px 5px 5px;
+    padding: 0.4rem 0.7rem;
+  }
 }
+// .heart {
+//   font-size: 1.5rem;
+//   color: $tertiary;
+//   vertical-align: middle;
+// }
+.delete-button {
+  color: $secondary;
+  border-color: $tertiary;
+  border-width: 2px;
+  font-size: 1rem;
+  .heart {
+    font-size: 1.5rem;
+    color: $tertiary;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    .heart {
+      color: $secondary;
+    }
+    color: $secondary;
+    border-color: $secondary;
+  }
+}
+
+.add-button {
+  color: $secondary;
+  border-color: $secondary;
+  border-width: 2px;
+  font-size: 1rem;
+  .heart {
+    font-size: 1.5rem;
+    color: $secondary;
+    vertical-align: middle;
+  }
+  &:hover {
+    .heart {
+      color: $tertiary;
+    }
+  }
+}
+
+.add-button {
+  //   vertical-align: middle;
+  //   font-size: 2rem;
+}
+
+//   color: $tertiary;
+//   border-color: $primary;
+//   border-width: 2px;
+
+//   &:hover {
+//     background-color: $tertiary;
+//     color: $secondary;
+//     border-color: $tertiary;
+//   }
+// }
+
+// .card-header {
+//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
+//   color: white; /* Setzt die Textfarbe auf weiß */
+//   //   text-align: center; /* Zentriert den Text */
+//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
+//   border-color: black;
+//   //   border-bottom: none; /* Entfernt den unteren Rand */
+// }
+
+// .card-footer {
+//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
+//   color: $secondary; /* Setzt die Textfarbe auf weiß */
+//   //   text-align: center; /* Zentriert den Text */
+//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
+//   // border-bottom: none; /* Entfernt den unteren Rand */
+// }
+
+// .card-body {
+//   border-radius: 5px;
+//   margin: 10px;
+//   //   background-color: rgb(250, 235, 215, 0.9);
+//   background-color: rgba(0, 0, 0, 0.9);
+//   color: white; /* Setzt die Textfarbe auf weiß */
+//   .card-title {
+//     padding: 5px 0;
+//     color: $tertiary;
+//   }
+// }
+
+// .card-body-div {
+//   padding: 10px;
+//   background-color: $secondary;
+// }

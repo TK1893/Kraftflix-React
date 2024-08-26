@@ -1,0 +1,29 @@
+$primary: #000;
+$secondary: antiquewhite;
+$tertiary: #ff00a2;
+$quatenary: rgb(83, 92, 223);
+$body-bg: antiquewhite;
+$pri-font: 'Abril Fatface', serif;
+$sec-font: 'Poppins', sans-serif;
+
+.nav-link {
+  font-family: $sec-font;
+  color: $secondary;
+  font-size: 1rem;
+
+  &:hover {
+    color: $tertiary;
+  }
+}
+
+// .nav-link .active {
+//   color: $tertiary !important;
+// }
+
+.kraftflix-brand {
+  p {
+    color: $tertiary;
+    font-family: $pri-font;
+    font-size: 3rem;
+  }
+}

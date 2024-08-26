@@ -1,5 +1,6 @@
 /* The following line can be included in a src/App.scss */
 import { Container } from 'react-bootstrap';
+import { NavigationBar } from './components/navigation-bar/navigation-bar';
 import './index.scss';
 
 // Import statement to indicate that you need to bundle `./index.scss`

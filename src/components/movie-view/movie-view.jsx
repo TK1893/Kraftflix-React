@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
+import { FaHeart } from 'react-icons/fa';
 import './movie-view.scss';
 
-export const MovieView = ({ movies, user, token, setUser }) => {
+export const MovieView = ({ movies, user, token }) => {
   const { movieId } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
   const movie = movies.find((m) => m._id === movieId);
@@ -76,59 +78,64 @@ export const MovieView = ({ movies, user, token, setUser }) => {
   };
 
   return (
-    <div className="mv-container">
-      <div>
-        <img src={movie.Imageurl} className="w-100" />
-      </div>
-      <div>
-        <span>Title:</span>
-        <span>{movie.Title}</span>
-      </div>
-      <div>
-        <span>Year:</span>
-        <span>{movie.Year}</span>
-      </div>
-      <div>
-        <span>Genre:</span>
-        <span>{movie.Genre.Name}</span>
-      </div>
-      <div>
-        <span>Plot:</span>
-        <span>{movie.Description}</span>
-      </div>
-      <div>
-        <span>Actors:</span>
-        <span> {movie.Actors.join(', ')}</span>
-      </div>
-      <div>
-        <span>Director:</span>
-        <span>{movie.Director.Name}</span>
-        <span>Biography:</span>
-        <span>{movie.Director.Bio}</span>
-      </div>
+    <Container>
+      <Row>
+        <Col xs={12} className="mt-3">
+          <Card>
+            <Card.Header>
+              <h2>{movie.Title}</h2>
+              <h4 className>( {movie.Year} )</h4>
+            </Card.Header>
+            <Card.Img variant="bottom" src={`${movie.Imageurl}`} />
 
-      <div>
-        <span>Featured:</span>
-        <span>{movie.Featured ? 'Yes' : 'No'}</span>
-      </div>
-      <div>
-        <span>ID:</span>
-        <span>{movie._id}</span>
-      </div>
-      <Link to={'/'}>
-        <button className="back-button">Back</button>
-      </Link>
-      <div className="mt-1">
-        {isFavorite ? (
-          <button variant="danger" onClick={removefromFavorite}>
-            Remove from favorite
-          </button>
-        ) : (
-          <button variant="primary" onClick={addtoFavorite}>
-            Add to favorite
-          </button>
-        )}
-      </div>
-    </div>
+            <Card.Body>
+              <Card.Subtitle>Genre</Card.Subtitle>
+              <Card.Text>{movie.Genre.Name}</Card.Text>
+              <Card.Subtitle>Director</Card.Subtitle>
+              <Card.Text>{movie.Director.Name}</Card.Text>
+              <Card.Subtitle>Actors</Card.Subtitle>
+              <Card.Text> {movie.Actors.join(', ')}</Card.Text>
+              <Card.Subtitle>Plot</Card.Subtitle>
+              <Card.Text>{movie.Description}</Card.Text>
+              <Card.Subtitle> Director Bio</Card.Subtitle>
+              <Card.Text>{movie.Director.Bio}</Card.Text>
+              <Card.Subtitle>Featured</Card.Subtitle>
+              <Card.Text>{movie.Featured ? 'Yes' : 'No'}</Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              {isFavorite ? (
+                <Button
+                  variant="primary"
+                  className="delete-button"
+                  size="sm"
+                  onClick={removefromFavorite}
+                >
+                  Remove from <span className="heart"> ♥</span> movies
+                  <br />
+                </Button>
+              ) : (
+                <Button
+                  variant="primary"
+                  className="add-button"
+                  size="sm"
+                  onClick={addtoFavorite}
+                >
+                  Add to <span className="heart"> ♥</span> movies
+                </Button>
+              )}
+            </Card.Footer>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Link to={'/'}>
+            <Button size="lg" className="primary-button-outline mb-3 mx-3">
+              Back
+            </Button>
+          </Link>
+        </Col>
+      </Row>
+    </Container>
   );
 };
