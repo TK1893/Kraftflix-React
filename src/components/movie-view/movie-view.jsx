@@ -18,7 +18,6 @@ export const MovieView = ({ movies, user, token }) => {
   }, [movieId, user]);
 
   const addtoFavorite = () => {
-    console.log('User 2: ', user);
     fetch(
       `https://kraftflix-api-d019e99d109c.herokuapp.com/users/${user.Username}/movies/${movieId}`,
       {
@@ -136,6 +135,15 @@ export const MovieView = ({ movies, user, token }) => {
           </Card>
         </Col>
       </Row>
+      {/* <Row>
+        <Col xs={12} md={8} xxl={6} className="mt-3">
+          <Link to={'/'}>
+            <Button size="lg" className="primary-button mb-3 ">
+              Back
+            </Button>
+          </Link>
+        </Col>
+      </Row> */}
     </Container>
   );
 };
