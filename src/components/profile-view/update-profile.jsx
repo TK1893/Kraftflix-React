@@ -57,60 +57,52 @@ export const UpdateProfile = ({ user, updatedUser }) => {
 
   return (
     <Card className="h-100">
-      <Card.Header>
-        <h5>Update Your Data</h5>
-      </Card.Header>
+      <Card.Header className="ch-pv">Update Your Data</Card.Header>
 
       <Card.Body>
-        <Card>
-          <Card.Body>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formUsername" className="mb-3">
-                <Form.Label>
-                  <h6>Username</h6>
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter new e-mail"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  minLength="5"
-                />
-              </Form.Group>
+        <Form onSubmit={handleSubmit}>
+          <div>
+            <Form.Group controlId="formUsername" className="fg mb-3">
+              <Form.Label className="w-100">Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter new e-mail"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                minLength="5"
+              />
+            </Form.Group>
+          </div>
 
-              <Form.Group controlId="formPassword" className="mb-3">
-                <Form.Label>
-                  <h6>Password</h6>
-                </Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Enter new password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </Form.Group>
+          <Form.Group controlId="formPassword" className="mb-3">
+            <Form.Label className="w-100">Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter new password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </Form.Group>
 
-              <Form.Group controlId="formEmail" className="mb-3">
-                <Form.Label>
-                  <h6>e-mail</h6>
-                </Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter new e-mail adress"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Edit Profile
-              </Button>
-            </Form>
-          </Card.Body>
-        </Card>
+          <Form.Group controlId="formEmail" className="mb-3">
+            <Form.Label className="w-100">e-mail</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter new e-mail adress"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Button className="secondary-button" type="submit">
+            Edit Profile
+          </Button>
+        </Form>
       </Card.Body>
+      {/* </Card>
+      </Card.Body> */}
     </Card>
   );
 };

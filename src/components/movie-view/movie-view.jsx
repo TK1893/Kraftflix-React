@@ -78,18 +78,18 @@ export const MovieView = ({ movies, user, token }) => {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col xs={12} className="mt-3">
-          <Card>
-            <Card.Header>
-              <h2>{movie.Title}</h2>
-              <h4 className>( {movie.Year} )</h4>
+    <Container fluid>
+      <Row className="justify-content-center">
+        <Col xs={12} lg={10} xxl={8} className="mt-3">
+          <Card id="mv-card">
+            <Card.Header className="mv-header">
+              {movie.Title}
+              <p>( {movie.Year} )</p>
             </Card.Header>
             <Card.Img variant="bottom" src={`${movie.Imageurl}`} />
 
-            <Card.Body>
-              <Card.Subtitle>Genre</Card.Subtitle>
+            <Card.Body id="mv-card-body">
+              <Card.Subtitle className="mt-2">Genre</Card.Subtitle>
               <Card.Text>{movie.Genre.Name}</Card.Text>
               <Card.Subtitle>Director</Card.Subtitle>
               <Card.Text>{movie.Director.Name}</Card.Text>
@@ -100,40 +100,40 @@ export const MovieView = ({ movies, user, token }) => {
               <Card.Subtitle> Director Bio</Card.Subtitle>
               <Card.Text>{movie.Director.Bio}</Card.Text>
               <Card.Subtitle>Featured</Card.Subtitle>
-              <Card.Text>{movie.Featured ? 'Yes' : 'No'}</Card.Text>
+              <Card.Text className="mb-2">
+                {movie.Featured ? 'Yes' : 'No'}
+              </Card.Text>
             </Card.Body>
             <Card.Footer>
               {isFavorite ? (
                 <Button
-                  variant="primary"
                   className="delete-button"
                   size="sm"
                   onClick={removefromFavorite}
                 >
-                  Remove from <span className="heart"> ♥</span> movies
+                  REMOVE from <span className="heart"> ♥ </span> MOVIES
                   <br />
                 </Button>
               ) : (
                 <Button
-                  variant="primary"
-                  className="add-button"
                   size="sm"
+                  className="add-button"
                   onClick={addtoFavorite}
                 >
-                  Add to <span className="heart"> ♥</span> movies
+                  ADD to <span className="heart"> ♥</span> MOVIES
                 </Button>
               )}
             </Card.Footer>
           </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Link to={'/'}>
-            <Button size="lg" className="primary-button-outline mb-3 mx-3">
-              Back
-            </Button>
-          </Link>
+          <Card className="b-card">
+            <Card.Body>
+              <Link to={'/'}>
+                <Button size="lg" className="primary-button mb-3 ">
+                  Back
+                </Button>
+              </Link>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>

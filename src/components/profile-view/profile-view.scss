@@ -1,3 +1,15 @@
+// profile-view.scss
+$primary: rgb(33, 37, 41);
+$secondary: rgb(250, 235, 215);
+$tertiary: #ff00a2;
+$quatenary: rgb(83, 92, 223);
+$body-bg: white;
+$pri-font: 'Anton', sans-serif;
+$sec-font: 'Roboto', sans-serif;
+.container-pv {
+  width: 80vw;
+}
+
 .fav-movie {
   margin-bottom: 15px;
   figure {
@@ -25,3 +37,13 @@
 .card {
   margin-bottom: 15px;
 }
+
+// .ch-pv {
+//   font-family: $pri-font;
+//   background-color: black;
+//   color: $secondary;
+// }
+
+// .ch-ui {
+//   font-weight: bold;
+// }

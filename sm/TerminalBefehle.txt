@@ -119,10 +119,10 @@ git add .
 git commit -m "Your commit message"
 git push -u origin NEW_BRANCH_NAME
 ------------------------------------
-git checkout -b Ex-3-7-Design
+git checkout -b Ex-3-7-Design-#1
 git add .
 git commit -m "Update kraftFlix"
-git push -u origin Ex-3-7-Design
+git push -u origin Ex-3-7-Design-#1
 
 ----------------------------------------------
 (14) Mergen (zusammenführen) eines branches in main branch

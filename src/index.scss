@@ -1,90 +1,72 @@
-$primary: rgb(0, 0, 0);
+$primary: rgb(33, 37, 41);
 $secondary: rgb(250, 235, 215);
 $tertiary: #ff00a2;
 $quatenary: rgb(83, 92, 223);
-$body-bg: antiquewhite;
-$pri-font: 'Abril Fatface', serif;
-$sec-font: 'Poppins', sans-serif;
+$body-bg: rgb(250, 235, 215);
+$pri-font: 'Anton', sans-serif;
+$sec-font: 'Roboto', sans-serif;
 
 @import '~bootstrap/scss/bootstrap.scss';
 
-// body {
-//   font-family: $sec-font;
-//   // Ersetze 'Roboto' durch die gewünschte Schriftart
-// }
 .primary-button {
+  text-transform: uppercase;
   background-color: black;
   color: $secondary;
-  font-family: $pri-font;
-}
-.primary-button-outline {
-  background-color: $secondary;
-  border-width: 1px;
-  color: $primary;
+  // color: $tertiary;
+  border: 2px solid black;
   font-family: $pri-font;
   &:hover {
-    color: $secondary;
-    border-width: 2px;
+    border: 2px solid black;
+    color: black;
+    background-color: $secondary;
   }
 }
 
 .secondary-button {
-  background-color: $secondary;
-  border-width: 1px;
-  color: $primary;
+  border-radius: 7px;
+  text-transform: uppercase;
+  background-color: black;
+  color: $secondary;
+  border: 2px solid $secondary;
   font-family: $pri-font;
   &:hover {
-    color: $secondary;
-    border-width: 2px;
+    background-color: black;
+    border: 2px solid $tertiary;
+    color: $tertiary;
   }
 }
 
-.card-header {
-  // font-family: $pri-font;
+.tertiary-button {
+  border-radius: 7px;
+  text-transform: uppercase;
+  background-color: black;
+  color: $tertiary;
+  border: 2px solid $tertiary;
+  font-family: $pri-font;
+  &:hover {
+    background-color: black;
+    border: 3px solid $tertiary;
+    color: $tertiary;
+  }
 }
-// .card-header {
-//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
-//   color: white; /* Setzt die Textfarbe auf weiß */
-//   //   text-align: center; /* Zentriert den Text */
-//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
-//   border-bottom: none; /* Entfernt den unteren Rand */
-// }
 
-// .card {
-//   border: none;
-//   background-size: cover;
-//   background-position: center;
-// }
-// .card-header {
-//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
-//   color: white; /* Setzt die Textfarbe auf weiß */
-//   //   text-align: center; /* Zentriert den Text */
-//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
-//   border-color: black;
-//   //   border-bottom: none; /* Entfernt den unteren Rand */
-// }
+.form-label {
+  font-family: $sec-font;
+  font-weight: bold;
+  background-color: rgb(243, 229, 209);
+  color: $primary;
+  border: solid rgba(0, 0, 0, 0.1) 1px;
+  border-radius: 5px 5px 0px 0px;
+  padding: 0.5rem 0.9rem;
+}
 
-// .card-footer {
-//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
-//   color: $secondary; /* Setzt die Textfarbe auf weiß */
-//   //   text-align: center; /* Zentriert den Text */
-//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
-//   // border-bottom: none; /* Entfernt den unteren Rand */
-// }
+.ch-pv {
+  font-family: $pri-font;
+  font-size: large;
+  background-color: black;
+  color: $secondary;
+}
 
-// .card-body {
-//   border-radius: 5px;
-//   margin: 10px;
-//   //   background-color: rgb(250, 235, 215, 0.9);
-//   background-color: rgba(0, 0, 0, 0.9);
-//   color: $white; /* Setzt die Textfarbe auf weiß */
-//   .card-title {
-//     padding: 5px 0;
-//     color: $tertiary;
-//   }
-// }
-
-// .card-body-div {
-//   padding: 10px;
-//   background-color: $secondary;
-// }
+.ch-ui {
+  font-weight: bold;
+}

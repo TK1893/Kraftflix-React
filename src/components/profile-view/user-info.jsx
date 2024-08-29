@@ -9,32 +9,24 @@ export const UserInfo = ({ user }) => {
 
   return (
     <Card className="user-data h-100">
-      <Card.Header>
-        <h5>Your Info</h5>
-      </Card.Header>
+      <Card.Header className="ch-pv">Your Info</Card.Header>
       <Card.Body>
         <Card>
-          <Card.Header>
-            <h6>Name</h6>{' '}
-          </Card.Header>
+          <Card.Header className="ch-ui">Name</Card.Header>
           <Card.Body>
             {/* <Card.Subtitle>Name</Card.Subtitle> */}
             <Card.Text>{user.Username}</Card.Text>
           </Card.Body>
         </Card>
         <Card>
-          <Card.Header>
-            <h6>e-mail</h6>
-          </Card.Header>
+          <Card.Header className="ch-ui">e-mail</Card.Header>
           <Card.Body>
             {/* <Card.Subtitle>e-mail</Card.Subtitle> */}
             <Card.Text>{user.Email}</Card.Text>
           </Card.Body>
         </Card>
         <Card>
-          <Card.Header>
-            <h6>Birthdate</h6>
-          </Card.Header>
+          <Card.Header className="ch-ui">Birthdate</Card.Header>
           <Card.Body>
             {/* <Card.Subtitle>Birthdate</Card.Subtitle> */}
             <Card.Text>{formattedBirthdate}</Card.Text>

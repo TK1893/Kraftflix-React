@@ -48,7 +48,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
     <Navbar bg="black" expand="lg" className="mb-3">
       <Container>
         <Navbar.Brand as={Link} to="/" className="kraftflix-brand mx-3">
-          <p>kraftFlix</p>
+          <p>KRAFTFLIX</p>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

@@ -51,14 +51,11 @@ export const LoginView = ({ onLoggedIn }) => {
         <Col>
           <CardGroup>
             <Card>
-              <Card.Header>Please Login</Card.Header>
-              {/* Option für Card.Title */}
+              <Card.Header className="ch-pv">Please Login</Card.Header>
               <Card.Body>
-                {/* <Card.Title>Please Login</Card.Title> */}
-                {/* Option für Card.Header */}
                 <Form onSubmit={handleSubmit}>
-                  <Form.Group controlId="formUsername">
-                    <Form.Label>Username: </Form.Label>
+                  <Form.Group controlId="formUsername" className="mt-2">
+                    <Form.Label className="w-100">Username </Form.Label>
                     <Form.Control
                       type="text"
                       value={username}
@@ -69,8 +66,8 @@ export const LoginView = ({ onLoggedIn }) => {
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formPassword">
-                    <Form.Label>Password: </Form.Label>
+                  <Form.Group controlId="formPassword" className="mt-3">
+                    <Form.Label className="w-100">Password </Form.Label>
                     <Form.Control
                       type="password"
                       value={password}
@@ -79,7 +76,7 @@ export const LoginView = ({ onLoggedIn }) => {
                       placeholder="Enter your password"
                     />
                   </Form.Group>
-                  <Button variant="primary" type="submit" className="my-3">
+                  <Button type="submit" className="secondary-button mt-3">
                     Submit
                   </Button>
                 </Form>

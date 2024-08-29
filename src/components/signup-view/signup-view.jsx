@@ -49,14 +49,11 @@ export const SignupView = () => {
         <Col>
           <CardGroup>
             <Card>
-              <Card.Header>Please Register</Card.Header>
-              {/* Option für Card.Title */}
+              <Card.Header className="ch-pv">Please Register</Card.Header>
               <Card.Body>
-                {/* <Card.Title>Please Register</Card.Title> */}
-                {/* Option für Card.Header */}
                 <Form onSubmit={handleSubmit}>
-                  <Form.Group controlId="formUsername">
-                    <Form.Label>Username</Form.Label>
+                  <Form.Group controlId="formUsername" className="mt-2">
+                    <Form.Label className="w-100">Username</Form.Label>
                     <Form.Control
                       type="text"
                       value={username}
@@ -67,8 +64,8 @@ export const SignupView = () => {
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formPassword">
-                    <Form.Label>Password: </Form.Label>
+                  <Form.Group controlId="formPassword" className="mt-3">
+                    <Form.Label className="w-100">Password </Form.Label>
                     <Form.Control
                       type="password"
                       value={password}
@@ -78,8 +75,8 @@ export const SignupView = () => {
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formEmail">
-                    <Form.Label>Email: </Form.Label>
+                  <Form.Group controlId="formEmail" className="mt-3">
+                    <Form.Label className="w-100">Email </Form.Label>
                     <Form.Control
                       type="email"
                       value={email}
@@ -89,8 +86,8 @@ export const SignupView = () => {
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formBirthdate">
-                    <Form.Label>Birthdate: </Form.Label>
+                  <Form.Group controlId="formBirthdate" className="mt-3">
+                    <Form.Label className="w-100">Birthdate </Form.Label>
                     <Form.Control
                       type="date"
                       value={birthdate}
@@ -98,7 +95,11 @@ export const SignupView = () => {
                     />
                   </Form.Group>
 
-                  <Button variant="primary" type="submit" className="my-3">
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    className="secondary-button mt-3"
+                  >
                     Submit
                   </Button>
                 </Form>

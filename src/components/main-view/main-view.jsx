@@ -91,7 +91,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-      <Row className="justify-content-md-center main-row mt-3">
+      <Row className="justify-content-center main-row mt-3 mx-4">
         <Routes>
           <Route
             path="/login"
@@ -150,7 +150,6 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list is empty</Col>
                 ) : (
-                  // <Col md={8}>
                   <Col>
                     <MovieView
                       movies={movies}
@@ -181,6 +180,7 @@ export const MainView = () => {
                         sm={6}
                         md={4}
                         lg={3}
+                        xxl={2}
                         className="mb-3"
                       >
                         <MovieCard movie={movie} />

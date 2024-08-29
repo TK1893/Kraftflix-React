@@ -40,29 +40,26 @@ export const ProfileView = ({
   return (
     <Container>
       <Row>
-        {/* <Row className="justify-content-md-center main-row"> */}
-        <Col md={12} lg={4} className="mt-3">
+        <Col xs={12} md={6} lg={4} className="mt-3">
           <UserInfo user={user} />
         </Col>
-        <Col md={12} lg={4} className="mt-3">
+        <Col xs={12} md={6} lg={4} className="mt-3">
           <UpdateProfile
             user={user}
             updatedUser={updatedUser}
             className="mt-3"
           />
         </Col>
-        <Col md={12} lg={4} className="mt-3">
+        <Col xs={12} md={6} lg={4} className="mt-3">
           <DeleteProfile profileDelete={profileDelete} />
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className="mt-3">
           <Card>
-            <Card.Header>
-              <h5>Favorite Movies</h5>
-            </Card.Header>
+            <Card.Header className="ch-pv">Favorite Movies</Card.Header>
             <Card.Body>
-              <Container>
+              <Container fluid>
                 <Row>
                   <FavoriteMovies user={user} movies={movies} />
                 </Row>

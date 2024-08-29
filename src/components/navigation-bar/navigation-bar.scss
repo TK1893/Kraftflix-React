@@ -3,13 +3,14 @@ $secondary: antiquewhite;
 $tertiary: #ff00a2;
 $quatenary: rgb(83, 92, 223);
 $body-bg: antiquewhite;
-$pri-font: 'Abril Fatface', serif;
-$sec-font: 'Poppins', sans-serif;
+$pri-font: 'Bungee Shade', system-ui;
+$sec-font: 'Anton', sans-serif;
 
 .nav-link {
   font-family: $sec-font;
   color: $secondary;
   font-size: 1rem;
+  text-transform: uppercase;
 
   &:hover {
     color: $tertiary;
@@ -23,7 +24,7 @@ $sec-font: 'Poppins', sans-serif;
 .kraftflix-brand {
   p {
     color: $tertiary;
-    font-family: $pri-font;
+    font-family: $sec-font;
     font-size: 3rem;
   }
 }

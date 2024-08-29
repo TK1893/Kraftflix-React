@@ -1,115 +1,101 @@
 /* movie-view.scss */
-$primary: rgb(0, 0, 0);
+$primary: rgb(33, 37, 41);
 $secondary: rgb(250, 235, 215);
 $tertiary: #ff00a2;
 $quatenary: rgb(83, 92, 223);
-$body-bg: antiquewhite;
-$pri-font: 'Abril Fatface', serif;
+$body-bg: white;
+$pri-font: 'Anton', sans-serif;
 $sec-font: 'Roboto', sans-serif;
 
-.card {
-  .card-subtitle {
-    background-color: $primary;
+#mv-card {
+  .mv-header {
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-family: $pri-font;
+    background-color: black;
     color: $secondary;
-    border: solid rgba(0, 0, 0, 0.1) 1px;
-    border-radius: 5px 5px 0px 0px;
-    padding: 0.4rem;
+    p {
+      font-size: 1.2rem;
+    }
   }
-  .card-text {
-    border: solid rgba(0, 0, 0, 0.2) 1px;
-    border-top: none;
-    border-radius: 0px 0px 5px 5px;
-    padding: 0.4rem 0.7rem;
-  }
-}
-// .heart {
-//   font-size: 1.5rem;
-//   color: $tertiary;
-//   vertical-align: middle;
-// }
-.delete-button {
-  color: $secondary;
-  border-color: $tertiary;
-  border-width: 2px;
-  font-size: 1rem;
-  .heart {
-    font-size: 1.5rem;
-    color: $tertiary;
-    vertical-align: middle;
+  #mv-card-body {
+    .card-subtitle {
+      font-family: $sec-font;
+      background-color: rgb(243, 229, 209);
+      color: $primary;
+      border: solid rgba(0, 0, 0, 0.1) 1px;
+      border-radius: 5px 5px 0px 0px;
+      padding: 0.4rem;
+    }
+    .card-text {
+      border: solid rgba(0, 0, 0, 0.2) 1px;
+      border-top: none;
+      border-radius: 0px 0px 5px 5px;
+      padding: 0.4rem 0.7rem;
+    }
   }
 
-  &:hover {
+  .add-button {
+    // border: 1px solid black;
+    border-radius: 10px;
+    font-family: $pri-font;
+    background-color: black;
+    color: $secondary;
     .heart {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
       color: $secondary;
+      vertical-align: middle;
     }
-    color: $secondary;
-    border-color: $secondary;
+    &:hover {
+      .heart {
+        color: $tertiary;
+        font-size: 2rem;
+      }
+      border: solid 3px $tertiary;
+    }
   }
-}
 
-.add-button {
-  color: $secondary;
-  border-color: $secondary;
-  border-width: 2px;
-  font-size: 1rem;
-  .heart {
-    font-size: 1.5rem;
+  .delete-button {
+    // border: 3px solid $tertiary;
+    border-radius: 10px;
+    font-family: $pri-font;
+    background-color: black;
     color: $secondary;
-    vertical-align: middle;
-  }
-  &:hover {
+    font-size: 1rem;
     .heart {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
       color: $tertiary;
+      vertical-align: middle;
+    }
+
+    &:hover {
+      .heart {
+        color: $secondary;
+      }
+      color: $secondary;
+      border-color: $secondary;
     }
   }
 }
-
-.add-button {
-  //   vertical-align: middle;
-  //   font-size: 2rem;
+.b-card {
+  border: none;
+  .card-body {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
 }
 
-//   color: $tertiary;
-//   border-color: $primary;
+// .back-button {
+//   background-color: black;
+//   color: $secJondary;
 //   border-width: 2px;
-
+//   font-family: $pri-font;
 //   &:hover {
-//     background-color: $tertiary;
-//     color: $secondary;
-//     border-color: $tertiary;
+//     border: 1px solid black;
+//     color: black;
+//     background-color: $secondary;
 //   }
-// }
-
-// .card-header {
-//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
-//   color: white; /* Setzt die Textfarbe auf weiß */
-//   //   text-align: center; /* Zentriert den Text */
-//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
-//   border-color: black;
-//   //   border-bottom: none; /* Entfernt den unteren Rand */
-// }
-
-// .card-footer {
-//   background-color: $primary; /* Setzt die Hintergrundfarbe auf $primary */
-//   color: $secondary; /* Setzt die Textfarbe auf weiß */
-//   //   text-align: center; /* Zentriert den Text */
-//   //   padding: 1rem; /* Optional: Setzt den Innenabstand */
-//   // border-bottom: none; /* Entfernt den unteren Rand */
-// }
-
-// .card-body {
-//   border-radius: 5px;
-//   margin: 10px;
-//   //   background-color: rgb(250, 235, 215, 0.9);
-//   background-color: rgba(0, 0, 0, 0.9);
-//   color: white; /* Setzt die Textfarbe auf weiß */
-//   .card-title {
-//     padding: 5px 0;
-//     color: $tertiary;
-//   }
-// }
-
-// .card-body-div {
-//   padding: 10px;
-//   background-color: $secondary;
 // }

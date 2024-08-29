@@ -10,7 +10,8 @@ import { MainView } from './components/main-view/main-view';
 
 const App = () => {
   return (
-    <Container style={{ border: '1px solid red' }}>
+    <Container>
+      {/* <Container style={{ border: '1px solid red' }}> */}
       <MainView />
     </Container>
   );

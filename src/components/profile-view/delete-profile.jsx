@@ -4,17 +4,15 @@ import { Card, Button, Alert } from 'react-bootstrap';
 export const DeleteProfile = ({ profileDelete }) => {
   return (
     <Card>
-      <Card.Header>
-        <h5>Delete Your Account</h5>
-      </Card.Header>
+      <Card.Header className="ch-pv">Delete Your Account</Card.Header>
       <Card.Body>
         <Button
-          variant="danger"
+          className="tertiary-button"
           onClick={() => {
             profileDelete();
           }}
         >
-          Delete account
+          DELETE ACCOUNT
         </Button>
       </Card.Body>
     </Card>
