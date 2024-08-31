@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 import { UserInfo } from './user-info';
 import { UpdateProfile } from './update-profile';
 import { DeleteProfile } from './delete-profile';
 import { MovieCard } from '../movie-card/movie-card';
-import { FavoriteMovies } from './favorite-movies';
 import './profile-view.scss';
+import { FavoriteMovies } from './favorite-movies';
 
 export const ProfileView = ({
   user,
@@ -15,8 +14,6 @@ export const ProfileView = ({
   updatedUser,
   onLoggedOut,
   movies,
-  addToFavorites,
-  removeFromFavorites,
 }) => {
   const profileDelete = () => {
     fetch(
@@ -42,42 +39,35 @@ export const ProfileView = ({
 
   return (
     <Container>
-      <Row className="justify-content-center ">
-        <Col xs={12} md={6} lg={4} className="mb-4">
+      <Row>
+        <Col xs={12} md={6} lg={4} className="mt-3">
           <UserInfo user={user} />
         </Col>
-        <Col xs={12} md={6} lg={4} className="mb-4">
-          <UpdateProfile user={user} updatedUser={updatedUser} />
+        <Col xs={12} md={6} lg={4} className="mt-3">
+          <UpdateProfile
+            user={user}
+            updatedUser={updatedUser}
+            className="mt-3"
+          />
         </Col>
-        <Col md={6} lg={4} className="mb-3">
+        <Col xs={12} md={6} lg={4} className="mt-3">
           <DeleteProfile profileDelete={profileDelete} />
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className="mt-3">
           <Card>
             <Card.Header className="ch-pv">Favorite Movies</Card.Header>
             <Card.Body>
               <Container fluid>
                 <Row>
-                  <FavoriteMovies
-                    user={user}
-                    movies={movies}
-                    addToFavorites={addToFavorites}
-                    removeFromFavorites={removeFromFavorites}
-                  />
+                  <FavoriteMovies user={user} movies={movies} />
                 </Row>
               </Container>
             </Card.Body>
           </Card>
         </Col>
       </Row>
-
-      <Link to={'/'}>
-        <Button size="sm" className="primary-button mb-3 ">
-          Back
-        </Button>
-      </Link>
     </Container>
   );
 };

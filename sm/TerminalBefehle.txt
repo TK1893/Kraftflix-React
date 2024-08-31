@@ -1,0 +1,137 @@
+****************************************
+** TERMINALBEFEHLE  ********************
+****************************************
+
+----------------------------------------------
+(1) Änderungen an Github übertragen (comitten)
+----------------------------------------------
+git add .
+git commit -m "Update Meet App Ex.4-4 "
+git branch -M main
+
+--------------------------------------------
+(2) übergebenen Änderungen auf Github pushen
+--------------------------------------------
+git push -u origin main
+
+----------------------------------------------
+(3) Projekt im "gh-pages"-Branch bereitstellen
+----------------------------------------------
+npm run deploy
+
+----------------------------------------------
+(4) KOMBIBEFEHL (1) & (2)
+----------------------------------------------
+git add .
+git commit -m "Update Meet App Ex.4-5"
+git branch -M main
+git push -u origin main
+
+----------------------------------------------
+(5) KOMBIBEFEHL (1) bis (3)
+----------------------------------------------
+git add .
+git commit -m "Update Meet App Ex.4-5"
+git branch -M main
+git push -u origin main
+npm run deploy
+
+Erklärung der Befehle & Begriffe
+**********************************************
+* Commit
+Ein Commit in Git ist eine Momentaufnahme des aktuellen Zustands deines Projekts. 
+Es speichert den Stand aller Dateien und Verzeichnisse, 
+die im Git-Repository verfolgt werden, 
+zu einem bestimmten Zeitpunkt. 
+
+* git add .
+***********
+Dieser Befehl fügt alle Änderungen (neue, modifizierte & gelöschte Dateien) 
+im aktuellen Verzeichnis und allen Unterverzeichnissen zur Staging-Area hinzu. 
+Dies bedeutet, dass diese Dateien für den nächsten Commit vorgemerkt werden.
+
+* git commit -m "Update ReadME Ex3-4"
+**************************************
+Mit diesem Befehl werden die Änderungen in der Staging-Area in das lokale Repository übernommen 
+und ein neuer Commit erstellt. Die Nachricht "Update Meet App Ex.4-4" beschreibt die Änderungen, 
+die im Commit enthalten sind. 
+Diese Nachricht hilft dabei, die Historie der Änderungen nachvollziehbar zu machen.
+
+* git branch -M main
+*********************
+Dieser Befehl benennt den aktuellen Branch in main um. 
+Das -M steht für "move/rename" und sorgt dafür, dass der Branch umbenannt wird, 
+selbst wenn bereits ein Branch namens main existiert. 
+Es ist nützlich, wenn du den Standardbranch von master auf main umstellen möchtest, 
+was in letzter Zeit eine gängige Praxis geworden ist.
+
+* git push -u origin main
+**************************
+Dieser Befehl schiebt die Commits des lokalen main-Branches zum Remote-Repository 
+(gewöhnlich auf GitHub oder einem anderen Git-Server). 
+Das -u (oder --set-upstream) setzt den main-Branch als den Upstream-Branch, 
+was bedeutet, dass zukünftige git push und git pull Befehle standardmäßig mit origin main arbeiten werden.
+
+* npm run deploy
+*****************
+führt ein benutzerdefiniertes Skript aus, das in der package.json Datei des Projekts definiert ist. 
+npm steht für Node Package Manager, und run deploy führt das Skript mit dem Namen deploy aus. 
+Die genaue Aktion dieses Befehls hängt davon ab, was im deploy Skript definiert ist. 
+In vielen Fällen wird dieses Skript verwendet, um die Anwendung auf einem Server zu veröffentlichen 
+oder zu aktualisieren.
+
+----------------------------------------------
+(6) App starten
+----------------------------------------------
+parcel src/index.html
+
+----------------------------------------------
+(8) Wechseln zum main Branch
+----------------------------------------------
+git checkout main
+
+----------------------------------------------
+(9) Erstellen eines neuen Branches
+----------------------------------------------
+git checkout -b NEW_BRANCH_NAME
+
+----------------------------------------------
+(10) Überprüfen des aktuellen Branches
+----------------------------------------------
+git branch
+
+----------------------------------------------
+(11) Änderungen hinzufügen und committen
+----------------------------------------------
+git add .
+git commit -m "Your commit message"
+
+----------------------------------------------
+(12) Pushen des neuen Branches zu GitHub
+----------------------------------------------
+git push -u origin NEW_BRANCH_NAME
+
+----------------------------------------------
+(13) KOMBIBEFEHL (9) (11) (12)
+----------------------------------------------
+git checkout -b NEW_BRANCH_NAME
+git add .
+git commit -m "Your commit message"
+git push -u origin NEW_BRANCH_NAME
+------------------------------------
+git checkout -b Ex-3-7-Master
+git add .
+git commit -m "Update kraftFlix"
+git push -u origin Ex-3-7-Master
+
+----------------------------------------------
+(14) Mergen (zusammenführen) eines branches in main branch
+----------------------------------------------
+git checkout main
+-
+git pull origin main // Hole die neuesten Änderungen aus dem entfernten Repository (falls nötig)
+-
+git merge Ex-4-7
+git add .
+git commit -m "Update Meet App Ex.4-7"
+git push origin main

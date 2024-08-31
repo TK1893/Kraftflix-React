@@ -1,6 +1,75 @@
-// .card-title {
-//   color: pink; /* Ihre gewünschte Schriftfarbe */
-// }
-// .card-body {
-//   color: orange; /* Ihre gewünschte Schriftfarbe */
-// }
+// movie-card.scss
+$primary: rgb(33, 37, 41);
+$secondary: rgb(250, 235, 215);
+$tertiary: #ff00a2;
+$quatenary: rgb(83, 92, 223);
+$body-bg: white;
+$pri-font: 'Anton', sans-serif;
+$sec-font: 'Roboto', sans-serif;
+$ter-font: 'SUSE', sans-serif;
+
+.movC-c {
+  .card-body {
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+  .card-footer {
+    font-family: $sec-font;
+    padding: 6px 6px;
+    div:first-child {
+      padding: 0 0 0 7px;
+    }
+    div:nth-child(2) {
+      text-align: right;
+      padding: 0 15px 0 0;
+    }
+  }
+  .ab-small {
+    border: none;
+    padding: 0 6px;
+    background-color: black;
+    transition: all 0.3s ease-in-out;
+
+    .heart {
+      font-family: $ter-font;
+      color: $secondary;
+      vertical-align: middle;
+    }
+
+    &:hover {
+      background-color: black;
+      border: 1px solid $tertiary;
+
+      border-color: $tertiary;
+      transform: scale(1.5);
+
+      .heart {
+        color: $tertiary;
+      }
+    }
+  }
+  .db-small {
+    padding: 0 6px;
+    background-color: black;
+    border: 2px solid $tertiary;
+    border-color: $tertiary;
+    transition: all 0.3s ease-in-out;
+
+    .heart {
+      color: $tertiary;
+      vertical-align: middle;
+    }
+
+    &:hover {
+      background-color: black;
+      border: none;
+      transform: scale(1.5);
+
+      .heart {
+        color: $secondary;
+      }
+    }
+  }
+}

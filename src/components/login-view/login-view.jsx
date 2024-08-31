@@ -46,48 +46,39 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Container>
-      <Row className="my-3">
-        <Col>
-          <CardGroup>
-            <Card>
-              <Card.Header>Please Login</Card.Header>
-              {/* Option für Card.Title */}
-              <Card.Body>
-                {/* <Card.Title>Please Login</Card.Title> */}
-                {/* Option für Card.Header */}
-                <Form onSubmit={handleSubmit}>
-                  <Form.Group controlId="formUsername">
-                    <Form.Label>Username: </Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                      minlength="3"
-                      placeholder="Enter your username"
-                    />
-                  </Form.Group>
+    <CardGroup>
+      <Card>
+        <Card.Header className="ch-pv">Please Login</Card.Header>
+        <Card.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formUsername" className="mt-2">
+              <Form.Label className="w-100">Username </Form.Label>
+              <Form.Control
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                minlength="3"
+                placeholder="Enter your username"
+              />
+            </Form.Group>
 
-                  <Form.Group controlId="formPassword">
-                    <Form.Label>Password: </Form.Label>
-                    <Form.Control
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      placeholder="Enter your password"
-                    />
-                  </Form.Group>
-                  <Button variant="primary" type="submit" className="my-3">
-                    Submit
-                  </Button>
-                </Form>
-              </Card.Body>
-            </Card>
-          </CardGroup>
-        </Col>
-      </Row>
-    </Container>
+            <Form.Group controlId="formPassword" className="mt-3">
+              <Form.Label className="w-100">Password </Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="Enter your password"
+              />
+            </Form.Group>
+            <Button size="sm" type="submit" className="tertiary-button mt-3">
+              Submit
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+    </CardGroup>
   );
 };

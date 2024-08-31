@@ -1,54 +1,106 @@
+// src\components\movie-view\movie-view.jsx
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import './movie-view.scss';
 
-export const MovieView = ({ movies }) => {
+export const MovieView = ({
+  movies,
+  user,
+  addToFavorites,
+  removeFromFavorites,
+}) => {
   const { movieId } = useParams();
-  const movie = movies.find((item) => item.id === movieId);
+  const movie = movies.find((m) => m._id === movieId);
+
+  if (!movie) return <div>Movie not found!</div>;
+
+  const isFavorite = user.FavoriteMovies.includes(movie._id);
 
   return (
-    <div className="mv-container">
-      <div>
-        <img src={movie.image} className="w-100" />
-      </div>
-      <div>
-        <span>Title:</span>
-        <span>{movie.title}</span>
-      </div>
-      <div>
-        <span>Year:</span>
-        <span>{movie.year}</span>
-      </div>
-      <div>
-        <span>Genre:</span>
-        <span>{movie.genre.Name}</span>
-      </div>
-      <div>
-        <span>Plot:</span>
-        <span>{movie.description}</span>
-      </div>
-      <div>
-        <span>Actors:</span>
-        <span> {movie.actors.join(', ')}</span>
-      </div>
-      <div>
-        <span>Director:</span>
-        <span>{movie.director.Name}</span>
-        <span>Biography:</span>
-        <span>{movie.director.Bio}</span>
-      </div>
+    <Container>
+      <Row className="justify-content-center">
+        <Col xs={12} lg={10} xxl={8} className=" mV-col">
+          <Card id="mV-c">
+            <Card.Header className="mv-header">
+              {movie.Title}
+              <p>( {movie.Year} )</p>
+            </Card.Header>
+            <Card.Img className="mt-3" src={`${movie.Imageurl}`} />
 
-      <div>
-        <span>Featured:</span>
-        <span>{movie.featured ? 'Yes' : 'No'}</span>
-      </div>
-      <div>
-        <span>ID:</span>
-        <span>{movie.id}</span>
-      </div>
-      <Link to={'/'}>
-        <button className="back-button">Back</button>
-      </Link>
-    </div>
+            <Card.Body id="mv-card-body">
+              <Card.Subtitle className="mt-2">Genre</Card.Subtitle>
+              <Card.Text>{movie.Genre.Name}</Card.Text>
+              <Card.Subtitle>Director</Card.Subtitle>
+              <Card.Text>{movie.Director.Name}</Card.Text>
+              <Card.Subtitle>Actors</Card.Subtitle>
+              <Card.Text> {movie.Actors.join(', ')}</Card.Text>
+              <Card.Subtitle>Plot</Card.Subtitle>
+              <Card.Text>{movie.Description}</Card.Text>
+              <Card.Subtitle> Director Bio</Card.Subtitle>
+              <Card.Text>{movie.Director.Bio}</Card.Text>
+              <Card.Subtitle>Featured</Card.Subtitle>
+              <Card.Text className="mb-2">
+                {movie.Featured ? 'Yes' : 'No'}
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              {isFavorite ? (
+                <Button
+                  className="delete-button"
+                  size="sm"
+                  onClick={() => removeFromFavorites(movie._id)}
+                >
+                  REMOVE from <span className="heart"> ♥ </span> MOVIES
+                </Button>
+              ) : (
+                <Button
+                  size="sm"
+                  className="add-button"
+                  onClick={() => addToFavorites(movie._id)}
+                >
+                  ADD to <span className="heart"> ♥</span> MOVIES
+                </Button>
+              )}
+            </Card.Footer>
+          </Card>
+
+          <Link to={'/'}>
+            <Button size="sm" className="primary-button mb-3 ">
+              Back
+            </Button>
+          </Link>
+        </Col>
+      </Row>
+    </Container>
   );
+};
+
+MovieView.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      Title: PropTypes.string.isRequired,
+      Year: PropTypes.number.isRequired,
+      Imageurl: PropTypes.string.isRequired,
+      Genre: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+      }).isRequired,
+      Director: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string,
+      }).isRequired,
+      Actors: PropTypes.arrayOf(PropTypes.string).isRequired,
+      Description: PropTypes.string.isRequired,
+      Featured: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  user: PropTypes.shape({
+    FavoriteMovies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired,
 };

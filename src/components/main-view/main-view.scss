@@ -1,3 +1,12 @@
-card-title {
-  color: pink; /* Ihre gewünschte Schriftfarbe */
+// src\components\main-view\main-view.scss
+$primary: rgb(0, 0, 0);
+$secondary: rgb(250, 235, 215);
+$tertiary: #ff00a2;
+$quatenary: rgb(83, 92, 223);
+$body-bg: antiquewhite;
+$pri-font: 'Abril Fatface', serif;
+$sec-font: 'Poppins', sans-serif;
+
+.main-row {
+  padding: 20px 30px;
 }

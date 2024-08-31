@@ -1,15 +1,15 @@
 /* The following line can be included in a src/App.scss */
 import { Container } from 'react-bootstrap';
+import { NavigationBar } from './components/navigation-bar/navigation-bar';
 import './index.scss';
 
 // Import statement to indicate that you need to bundle `./index.scss`
 import { createRoot } from 'react-dom/client';
 import { MainView } from './components/main-view/main-view';
-// Main component (will eventually use all the others)
 
 const App = () => {
   return (
-    <Container style={{ border: '1px solid red' }}>
+    <Container>
       <MainView />
     </Container>
   );

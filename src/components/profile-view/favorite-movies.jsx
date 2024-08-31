@@ -1,46 +1,41 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
+import { MovieCard } from '../movie-card/movie-card';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { Container, Row, Col, Figure, Button, Card } from 'react-bootstrap';
 
-export const FavoriteMovies = ({ favoriteMovieList }) => {
-  {
-    // ...
-    let url = `https://myflix.herokuapp.com/users/${localStorage.getItem(
-      'user'
-    )}/movies/${id}`;
-    axios.delete(url, { headers: { Autorization: `Bearer ${token}` } });
-  }
-
+export const FavoriteMovies = ({
+  user,
+  movies,
+  addToFavorites,
+  removeFromFavorites,
+}) => {
+  const favoriteMovies = movies.filter((m) =>
+    user.FavoriteMovies.includes(m._id)
+  );
   return (
-    <Card>
-      <Card.Body>
-        <Row>
-          <Col xs={12}>
-            <h2>Favorite Movies</h2>
+    <>
+      {favoriteMovies.length === 0 ? (
+        <p> No favorite movies </p>
+      ) : (
+        favoriteMovies.map((movie) => (
+          <Col key={movie._id} sm={6} md={4} lg={3} xxl={2} className="mb-3">
+            <MovieCard
+              key={movie._id}
+              movie={movie}
+              user={user}
+              addToFavorites={() => addToFavorites(movie._id)}
+              removeFromFavorites={() => removeFromFavorites(movie._id)}
+            />
           </Col>
-        </Row>
-        <Row>
-          {favoriteMovieList.map((movies) => {
-            return (
-              <Col xs={12} md={6} lg={3} key={movies._id} className="fav-movie">
-                <Figure>
-                  <Link to={`/movies/${movies._id}`}>
-                    <Figure.Image src={movies.ImagePath} alt={movies.Title} />
-                    <Figure.Caption>{movies.Title}</Figure.Caption>
-                  </Link>
-                </Figure>
-                <Button
-                  variant="secondary"
-                  onClick={() => removeFav(movies._id)}
-                >
-                  Remove
-                </Button>
-              </Col>
-            );
-          })}
-        </Row>
-      </Card.Body>
-    </Card>
+        ))
+      )}
+    </>
   );
 };
+
+{
+  /* // FavoriteMovies.prototype = {
+//   FavoriteMovies: PropTypes.array.isRequired,
+// }; */
+}
