@@ -1,8 +1,0 @@
-***************************
-** Update Info
-***************************
-(1)
-Aktualisierung des Geburtstages funktioniert nicht
-
-myFlix-client-3.7
-C:\Users\Tobsucht\Web Development\Fremde Abgaben\myFlix-client-3.7
