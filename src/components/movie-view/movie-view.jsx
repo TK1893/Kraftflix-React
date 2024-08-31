@@ -1,91 +1,35 @@
+// src\components\movie-view\movie-view.jsx
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
-import { FaHeart } from 'react-icons/fa';
 import './movie-view.scss';
 
-export const MovieView = ({ movies, user, token }) => {
+export const MovieView = ({
+  movies,
+  user,
+  addToFavorites,
+  removeFromFavorites,
+}) => {
   const { movieId } = useParams();
-  const [isFavorite, setIsFavorite] = useState(false);
   const movie = movies.find((m) => m._id === movieId);
 
-  useEffect(() => {
-    if (user && user.FavoriteMovies) {
-      const fav = user.FavoriteMovies.includes(movieId);
-      setIsFavorite(fav);
-    }
-  }, [movieId, user]);
+  if (!movie) return <div>Movie not found!</div>;
 
-  const addtoFavorite = () => {
-    fetch(
-      `https://kraftflix-api-d019e99d109c.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          alert('Add to favorite succeeded');
-          user.FavoriteMovies.push(movieId);
-          localStorage.setItem('user', JSON.stringify(user));
-          setIsFavorite(true);
-        } else {
-          alert('Adding failed');
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-  const removefromFavorite = () => {
-    fetch(
-      `https://kraftflix-api-d019e99d109c.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          alert('Deleting from favorite succeeded');
-          const lsUser = JSON.parse(localStorage.getItem('user'));
-          const filteredFavorites = lsUser.FavoriteMovies.filter(
-            (id) => id !== movieId
-          );
-          lsUser.FavoriteMovies = [...filteredFavorites];
-          localStorage.setItem('user', JSON.stringify(lsUser));
-          // const lsUser2 = JSON.parse(localStorage.getItem('user'));
-          // console.log('Local-Storage-User-2 :', lsUser2);
-          user.FavoriteMovies = [...filteredFavorites];
-          // console.log('User after Deleting', user);
-          setIsFavorite(false);
-        } else {
-          alert('Deleting failed');
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  const isFavorite = user.FavoriteMovies.includes(movie._id);
 
   return (
-    <Container fluid>
+    <Container>
       <Row className="justify-content-center">
-        <Col xs={12} lg={10} xxl={8} className="mt-3">
-          <Card id="mv-card">
+        <Col xs={12} lg={10} xxl={8} className=" mV-col">
+          <Card id="mV-c">
             <Card.Header className="mv-header">
               {movie.Title}
               <p>( {movie.Year} )</p>
             </Card.Header>
-            <Card.Img variant="bottom" src={`${movie.Imageurl}`} />
+            <Card.Img className="mt-3" src={`${movie.Imageurl}`} />
 
             <Card.Body id="mv-card-body">
               <Card.Subtitle className="mt-2">Genre</Card.Subtitle>
@@ -108,42 +52,55 @@ export const MovieView = ({ movies, user, token }) => {
                 <Button
                   className="delete-button"
                   size="sm"
-                  onClick={removefromFavorite}
+                  onClick={() => removeFromFavorites(movie._id)}
                 >
                   REMOVE from <span className="heart"> ♥ </span> MOVIES
-                  <br />
                 </Button>
               ) : (
                 <Button
                   size="sm"
                   className="add-button"
-                  onClick={addtoFavorite}
+                  onClick={() => addToFavorites(movie._id)}
                 >
                   ADD to <span className="heart"> ♥</span> MOVIES
                 </Button>
               )}
             </Card.Footer>
           </Card>
-          <Card className="b-card">
-            <Card.Body>
-              <Link to={'/'}>
-                <Button size="lg" className="primary-button mb-3 ">
-                  Back
-                </Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      {/* <Row>
-        <Col xs={12} md={8} xxl={6} className="mt-3">
+
           <Link to={'/'}>
-            <Button size="lg" className="primary-button mb-3 ">
+            <Button size="sm" className="primary-button mb-3 ">
               Back
             </Button>
           </Link>
         </Col>
-      </Row> */}
+      </Row>
     </Container>
   );
+};
+
+MovieView.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      Title: PropTypes.string.isRequired,
+      Year: PropTypes.number.isRequired,
+      Imageurl: PropTypes.string.isRequired,
+      Genre: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+      }).isRequired,
+      Director: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string,
+      }).isRequired,
+      Actors: PropTypes.arrayOf(PropTypes.string).isRequired,
+      Description: PropTypes.string.isRequired,
+      Featured: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  user: PropTypes.shape({
+    FavoriteMovies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired,
 };

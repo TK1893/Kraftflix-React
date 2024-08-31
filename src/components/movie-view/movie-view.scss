@@ -7,25 +7,32 @@ $body-bg: white;
 $pri-font: 'Anton', sans-serif;
 $sec-font: 'Roboto', sans-serif;
 
-#mv-card {
-  .mv-header {
-    text-transform: uppercase;
+#mV-c {
+  .card-header {
     font-size: 2rem;
     font-family: $pri-font;
     background-color: black;
     color: $secondary;
     p {
       font-size: 1.2rem;
+      margin: 0;
     }
   }
-  #mv-card-body {
+
+  .card-img {
+    width: 65%;
+    align-self: center;
+  }
+
+  .card-body {
     .card-subtitle {
       font-family: $sec-font;
+      // font-weight: bold;
       background-color: rgb(243, 229, 209);
       color: $primary;
       border: solid rgba(0, 0, 0, 0.1) 1px;
       border-radius: 5px 5px 0px 0px;
-      padding: 0.4rem;
+      padding: 0.5rem;
     }
     .card-text {
       border: solid rgba(0, 0, 0, 0.2) 1px;
@@ -36,66 +43,63 @@ $sec-font: 'Roboto', sans-serif;
   }
 
   .add-button {
-    // border: 1px solid black;
-    border-radius: 10px;
-    font-family: $pri-font;
+    border: none;
     background-color: black;
+    font-family: $pri-font;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 10px;
     color: $secondary;
+    transition: all 0.3s ease-in-out;
+
     .heart {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
+      margin: 0;
+      padding: 0;
+      font-family: $sec-font;
+      font-size: 2rem;
       color: $secondary;
       vertical-align: middle;
     }
+
     &:hover {
+      transform: scale(1.2);
+      color: $secondary;
       .heart {
         color: $tertiary;
-        font-size: 2rem;
       }
-      border: solid 3px $tertiary;
     }
   }
 
   .delete-button {
-    // border: 3px solid $tertiary;
-    border-radius: 10px;
     font-family: $pri-font;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: 3px solid $tertiary;
+    border-radius: 10px;
     background-color: black;
     color: $secondary;
-    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+
     .heart {
+      margin: 0;
+      padding: 0;
       font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
+      font-size: 2rem;
       color: $tertiary;
       vertical-align: middle;
     }
 
     &:hover {
+      transform: scale(0.9);
+      color: $secondary;
+      border-color: $secondary;
       .heart {
         color: $secondary;
       }
-      color: $secondary;
-      border-color: $secondary;
     }
   }
 }
-.b-card {
-  border: none;
-  .card-body {
-    padding: 0;
-    margin: 0;
-    border: none;
-  }
-}
 
-// .back-button {
-//   background-color: black;
-//   color: $secJondary;
-//   border-width: 2px;
-//   font-family: $pri-font;
-//   &:hover {
-//     border: 1px solid black;
-//     color: black;
-//     background-color: $secondary;
-//   }
-// }
+.mV-col {
+  padding: 0;
+}

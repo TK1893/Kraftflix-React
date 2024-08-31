@@ -1,7 +1,7 @@
 $primary: rgb(33, 37, 41);
 $secondary: rgb(250, 235, 215);
 $tertiary: #ff00a2;
-$quatenary: rgb(83, 92, 223);
+$quatenary: #535cdf;
 $body-bg: rgb(250, 235, 215);
 $pri-font: 'Anton', sans-serif;
 $sec-font: 'Roboto', sans-serif;
@@ -15,6 +15,8 @@ $sec-font: 'Roboto', sans-serif;
   // color: $tertiary;
   border: 2px solid black;
   font-family: $pri-font;
+  transition: all 0.3s ease-in-out;
+
   &:hover {
     border: 2px solid black;
     color: black;
@@ -23,34 +25,41 @@ $sec-font: 'Roboto', sans-serif;
 }
 
 .secondary-button {
+  border: 2px solid $tertiary;
   border-radius: 7px;
-  text-transform: uppercase;
   background-color: black;
-  color: $secondary;
-  border: 2px solid $secondary;
+  color: $tertiary;
   font-family: $pri-font;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+
   &:hover {
-    background-color: black;
     border: 2px solid $tertiary;
+    background-color: black;
     color: $tertiary;
+    transform: scale(1.2);
   }
 }
 
 .tertiary-button {
+  border: 3px solid black;
   border-radius: 7px;
-  text-transform: uppercase;
   background-color: black;
-  color: $tertiary;
-  border: 2px solid $tertiary;
+  color: $secondary;
   font-family: $pri-font;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+
   &:hover {
+    border: 3px solid black;
     background-color: black;
-    border: 3px solid $tertiary;
     color: $tertiary;
+    transform: scale(1.2);
   }
 }
 
 .form-label {
+  margin: 0;
   font-family: $sec-font;
   font-weight: bold;
   background-color: rgb(243, 229, 209);
@@ -60,13 +69,11 @@ $sec-font: 'Roboto', sans-serif;
   padding: 0.5rem 0.9rem;
 }
 
-.ch-pv {
-  font-family: $pri-font;
-  font-size: large;
-  background-color: black;
-  color: $secondary;
-}
-
 .ch-ui {
   font-weight: bold;
+}
+
+.form-control {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

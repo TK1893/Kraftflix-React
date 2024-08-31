@@ -96,13 +96,11 @@ export const UpdateProfile = ({ user, updatedUser }) => {
               required
             />
           </Form.Group>
-          <Button className="secondary-button" type="submit">
+          <Button size="sm" className="tertiary-button mt-2" type="submit">
             Edit Profile
           </Button>
         </Form>
       </Card.Body>
-      {/* </Card>
-      </Card.Body> */}
     </Card>
   );
 };

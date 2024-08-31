@@ -88,66 +88,10 @@ export const MainView = () => {
       });
   }, [token]);
 
-  const addToFavorites = (movieId) => {
-    fetch(
-      `https://kraftflix-api-d019e99d109c.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          alert('Adding to favorites succeded!');
-          const updatedFavorites = [...user.FavoriteMovies, movieId];
-          const updatedUser = { ...user, FavoriteMovies: updatedFavorites };
-          setUser(updatedUser);
-          localStorage.setItem('user', JSON.stringify(updatedUser));
-        } else {
-          alert('Adding failed!');
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
-  const removeFromFavorites = (movieId) => {
-    fetch(
-      `https://kraftflix-api-d019e99d109c.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          alert('Deleting from favorites succeded!');
-          const updatedFavorites = user.FavoriteMovies.filter(
-            (id) => id !== movieId
-          );
-          const updatedUser = { ...user, FavoriteMovies: updatedFavorites };
-          setUser(updatedUser);
-          localStorage.setItem('user', JSON.stringify(updatedUser));
-        } else {
-          alert('Deleting failed!');
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-      <Row className="justify-content-center main-row">
+      <Row className="justify-content-center main-row mt-3 mx-4">
         <Routes>
           <Route
             path="/login"
@@ -156,7 +100,7 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col xs={12} sm={10} md={8} lg={6} xl={5}>
+                  <Col md={5}>
                     <LoginView onLoggedIn={onLoggedIn} />
                   </Col>
                 )}
@@ -170,7 +114,7 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col xs={12} sm={10} md={8} lg={6} xl={5}>
+                  <Col md={5}>
                     <SignupView />
                   </Col>
                 )}
@@ -191,8 +135,6 @@ export const MainView = () => {
                       updatedUser={updatedUser}
                       onLoggedOut={onLoggedOut}
                       movies={movies}
-                      addToFavorites={addToFavorites}
-                      removeFromFavorites={removeFromFavorites}
                     />
                   </Col>
                 )}
@@ -208,12 +150,13 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list is empty</Col>
                 ) : (
-                  <Col classname="mx-2">
+                  <Col>
                     <MovieView
                       movies={movies}
                       user={user}
-                      addToFavorites={addToFavorites}
-                      removeFromFavorites={removeFromFavorites}
+                      token={token}
+                      updatedUser={updatedUser}
+                      onLoggedIn={onLoggedIn}
                     />
                   </Col>
                 )}
@@ -237,17 +180,10 @@ export const MainView = () => {
                         sm={6}
                         md={4}
                         lg={3}
+                        xxl={2}
                         className="mb-3"
                       >
-                        <MovieCard
-                          key={movie._id}
-                          movie={movie}
-                          user={user}
-                          addToFavorites={() => addToFavorites(movie._id)}
-                          removeFromFavorites={() =>
-                            removeFromFavorites(movie._id)
-                          }
-                        />
+                        <MovieCard movie={movie} />
                       </Col>
                     ))}
                   </>

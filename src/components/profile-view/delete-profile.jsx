@@ -5,9 +5,9 @@ export const DeleteProfile = ({ profileDelete }) => {
   return (
     <Card>
       <Card.Header className="ch-pv">Delete Your Account</Card.Header>
-      <Card.Body>
+      <Card.Body className="d-flex justify-content-center">
         <Button
-          className="tertiary-button"
+          className="secondary-button"
           onClick={() => {
             profileDelete();
           }}

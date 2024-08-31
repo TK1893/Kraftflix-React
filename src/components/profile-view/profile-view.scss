@@ -6,10 +6,14 @@ $quatenary: rgb(83, 92, 223);
 $body-bg: white;
 $pri-font: 'Anton', sans-serif;
 $sec-font: 'Roboto', sans-serif;
-.container-pv {
-  width: 80vw;
-}
 
+.main-row .div {
+  margin: 0;
+  padding: 0;
+}
+.pV-row {
+  padding: 0;
+}
 .fav-movie {
   margin-bottom: 15px;
   figure {
@@ -38,12 +42,12 @@ $sec-font: 'Roboto', sans-serif;
   margin-bottom: 15px;
 }
 
-// .ch-pv {
-//   font-family: $pri-font;
-//   background-color: black;
-//   color: $secondary;
-// }
-
-// .ch-ui {
-//   font-weight: bold;
-// }
+.ch-pv {
+  font-family: $pri-font;
+  font-size: large;
+  background-color: black;
+  color: $secondary;
+}
+.uI-cB {
+  padding: 8px 16px;
+}

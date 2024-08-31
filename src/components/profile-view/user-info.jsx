@@ -13,22 +13,19 @@ export const UserInfo = ({ user }) => {
       <Card.Body>
         <Card>
           <Card.Header className="ch-ui">Name</Card.Header>
-          <Card.Body>
-            {/* <Card.Subtitle>Name</Card.Subtitle> */}
+          <Card.Body className="uI-cB">
             <Card.Text>{user.Username}</Card.Text>
           </Card.Body>
         </Card>
         <Card>
           <Card.Header className="ch-ui">e-mail</Card.Header>
-          <Card.Body>
-            {/* <Card.Subtitle>e-mail</Card.Subtitle> */}
+          <Card.Body className="uI-cB">
             <Card.Text>{user.Email}</Card.Text>
           </Card.Body>
         </Card>
         <Card>
           <Card.Header className="ch-ui">Birthdate</Card.Header>
-          <Card.Body>
-            {/* <Card.Subtitle>Birthdate</Card.Subtitle> */}
+          <Card.Body className="uI-cB">
             <Card.Text>{formattedBirthdate}</Card.Text>
           </Card.Body>
         </Card>

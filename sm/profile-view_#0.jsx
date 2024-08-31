@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 import { UserInfo } from './user-info';
-import { ProfileUpdate } from './profile-update';
+import { UpdateProfile } from './update-profile';
+import { DeleteProfile } from './delete-profile';
 import { MovieCard } from '../movie-card/movie-card';
 import './profile-view.scss';
+import { FavoriteMovies } from './favorite-movies';
 
 export const ProfileView = ({
   user,
@@ -12,19 +14,8 @@ export const ProfileView = ({
   updatedUser,
   onLoggedOut,
   movies,
-  // favoriteMovies,
 }) => {
-  console.log('user:', user);
-  const favoriteMovies = movies.filter((m) =>
-    user.FavoriteMovies.includes(m._id)
-  );
-
-  const formattedBirthdate = new Date(user.Birthdate)
-    .toISOString()
-    .split('T')[0];
-  console.log('formattedBirthdate:', formattedBirthdate);
-
-  const ProfileDelete = () => {
+  const profileDelete = () => {
     fetch(
       `https://kraftflix-api-d019e99d109c.herokuapp.com/users/${user.Username}`,
       {
@@ -37,6 +28,7 @@ export const ProfileView = ({
     ).then((response) => {
       console.log(response);
       if (response.ok) {
+        alert('Account deleted successfully!');
         console.log('Account deleted successfully!');
         onLoggedOut();
       } else {
@@ -47,55 +39,31 @@ export const ProfileView = ({
 
   return (
     <Container>
-      <Row className="justify-content-center">
-        <Col>
-          <Card className="user-data">
-            <Card.Header>
-              <h2>User Info</h2>
-            </Card.Header>
-            <Card.Body>
-              <UserInfo
-                name={user.Username}
-                email={user.Email}
-                birthdate={formattedBirthdate}
-                password={user.Password}
-                id={user._id}
-                favMovies={user.FavoriteMovies}
-              />
-            </Card.Body>
-          </Card>
+      <Row>
+        <Col xs={12} md={6} lg={4} className="mt-3">
+          <UserInfo user={user} />
         </Col>
-        <Col xs={12}>
+        <Col xs={12} md={6} lg={4} className="mt-3">
+          <UpdateProfile
+            user={user}
+            updatedUser={updatedUser}
+            className="mt-3"
+          />
+        </Col>
+        <Col xs={12} md={6} lg={4} className="mt-3">
+          <DeleteProfile profileDelete={profileDelete} />
+        </Col>
+      </Row>
+      <Row>
+        <Col className="mt-3">
           <Card>
-            <Card.Header>
-              <h2>Update User Data</h2>
-            </Card.Header>
+            <Card.Header className="ch-pv">Favorite Movies</Card.Header>
             <Card.Body>
-              <ProfileUpdate
-                user={user}
-                token={token}
-                updatedUser={updatedUser}
-              />
-            </Card.Body>
-            <Card.Body>
-              <Button
-                variant="danger"
-                onClick={() => {
-                  ProfileDelete();
-                }}
-              >
-                Delete account
-              </Button>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Header>
-              <h2>Favorite Movies</h2>
-            </Card.Header>
-            <Card.Body>
-              {favoriteMovies.map((movie) => (
-                <MovieCard movie={movie}></MovieCard>
-              ))}
+              <Container fluid>
+                <Row>
+                  <FavoriteMovies user={user} movies={movies} />
+                </Row>
+              </Container>
             </Card.Body>
           </Card>
         </Col>

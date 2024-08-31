@@ -1,30 +1,83 @@
-$primary: #000;
+// src\components\navigation-bar\navigation-bar.scss
 $secondary: antiquewhite;
-$tertiary: #ff00a2;
+$tertiary: rgb(255, 0, 162);
 $quatenary: rgb(83, 92, 223);
 $body-bg: antiquewhite;
 $pri-font: 'Bungee Shade', system-ui;
 $sec-font: 'Anton', sans-serif;
 
-.nav-link {
-  font-family: $sec-font;
-  color: $secondary;
-  font-size: 1rem;
-  text-transform: uppercase;
+.navbar {
+  // padding: 5px;
+  background-color: black;
+  margin-bottom: 20px;
 
-  &:hover {
-    color: $tertiary;
+  .container {
+    background-color: black;
+    padding: 0.5rem 2rem;
+
+    .kraftflix-brand {
+      p {
+        color: $tertiary;
+        font-family: $sec-font;
+        // font-size: 3rem;
+        margin: 0;
+        padding-right: 20px;
+      }
+    }
+    .custom-toggler {
+      margin: 10px 0;
+      border: 1px solid $tertiary;
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 0, 162, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        color: $tertiary;
+      }
+    }
+    .navbar-collapse {
+      .navbar-nav {
+        display: flex;
+
+        .nav-link {
+          font-family: $sec-font;
+          color: $secondary;
+          font-size: 1rem;
+          text-transform: uppercase;
+          padding: 0;
+
+          &:hover {
+            color: $tertiary;
+          }
+
+          &.active {
+            color: $tertiary !important;
+          }
+        }
+      }
+    }
   }
 }
 
-// .nav-link .active {
-//   color: $tertiary !important;
-// }
-
-.kraftflix-brand {
-  p {
-    color: $tertiary;
-    font-family: $sec-font;
+// Media Query für kleinere Bildschirme
+@media (max-width: 767px) {
+  .navbar .navbar-nav {
+    gap: 10px; // Reduzierter Abstand auf kleineren Bildschirmen
+  }
+}
+@media (min-width: 768px) {
+  .navbar .navbar-nav {
+    gap: 40px; // Reduzierter Abstand auf kleineren Bildschirmen
+  }
+  .kraftflix-brand p {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 389px) {
+  .kraftflix-brand p {
+    font-size: 2.4rem;
+  }
+}
+@media (min-width: 392px) {
+  .kraftflix-brand p {
     font-size: 3rem;
   }
 }
