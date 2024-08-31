@@ -1,6 +1,4 @@
 node_modules/
 .cache/
 .parcel-cache/
-buglist.txt
-profile-view.text
-StartBefehl.txt
+.sm
