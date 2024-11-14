@@ -12,24 +12,12 @@ Please check out the Kraftflix Live App:
 
 ## Table of Contents
 
-- [Tech Stack](tech-stack)
 - [Technologies & Packages](#technologies--packages)
 - [Project Structure](#project-structure)
 - [Components](#components)
 - [Installation and Setup](#installation-and-setup)
 - [Usage](#usage)
 - [Future Enhancements](#future-enhancements)
-
----
-
-## Tech Stack
-
-The app is built on the **`MERN stack`**:
-
-- **`MongoDB`**: Database to store user data and movie information.
-- **`Express`**: Server framework to manage API endpoints.
-- **`React`**: Frontend library for building the client-side.
-- **`Node.js`**: Server environment to run the API.
 
 ---
 
@@ -53,6 +41,15 @@ The app is built on the **`MERN stack`**:
 ### Other Utilities
 
 - **`Prop-Types`**: Ensures that components receive props of the expected data type, aiding in development and debugging.
+
+### Tech Stack
+
+The app is built on the **`MERN stack`**:
+
+- **`MongoDB`**: Database to store user data and movie information.
+- **`Express`**: Server framework to manage API endpoints.
+- **`React`**: Frontend library for building the client-side.
+- **`Node.js`**: Server environment to run the API.
 
 ---
 
