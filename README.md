@@ -18,6 +18,8 @@ Please check out the Kraftflix Live App:
 - [Installation and Setup](#installation-and-setup)
 - [Usage](#usage)
 - [Future Enhancements](#future-enhancements)
+- [License](#license)
+- [Author](#author)
 
 ---
 
@@ -146,3 +148,15 @@ parcel src/index.html
 - **`Styling Improvements`**: Enhance aesthetics.
 - **`Search Functionality`**: Add a search bar for quicker movie lookups.
 - **`Comments & Ratings`**: Enable user reviews for movies.
+
+---
+
+## License
+
+This project is open-source under the MIT License.
+
+---
+
+## Author
+
+Developed by [Tobias Kraft](https://tk1893.github.io/tk-portfolio/).
