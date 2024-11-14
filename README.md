@@ -23,26 +23,26 @@ Please check out the Kraftflix Live App:
 
 ## Technologies & Packages
 
-### Core Technologies
+### `Core Technologies`
 
 - **`React`**: JavaScript library for building user interfaces with component-based architecture.
 - **`React Router DOM`**: Manages routes within the application, enabling navigation between pages.
 - **`React Bootstrap`**: Provides responsive, pre-styled components for a professional UI design.
 
-### State Management
+### `State Management`
 
 - **`useState & useEffect`**: React hooks for managing component state and handling lifecycle events within functional components.
 
-### HTTP & Data Management
+### `HTTP & Data Management`
 
 - **`Fetch API`**: JavaScript API for making asynchronous HTTP requests to communicate with the backend server.
 - **`Local Storage`** : used to persist user data, like login tokens and user information, between sessions.
 
-### Other Utilities
+### `Other Utilities`
 
 - **`Prop-Types`**: Ensures that components receive props of the expected data type, aiding in development and debugging.
 
-### Tech Stack
+### `Tech Stack`
 
 The app is built on the **`MERN stack`**:
 
