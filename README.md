@@ -159,4 +159,4 @@ This project is open-source under the MIT License.
 
 ## Author
 
-Developed by [Tobias Kraft](https://tk1893.github.io/tk-portfolio/).
+Developed by [Tobias Kraft](https://tk1893.github.io/tk-portfolio/)
